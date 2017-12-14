@@ -1,4 +1,5 @@
 import React from 'react';
+import {SearchContainer} from './SearchContainer';
 
 export class Slider extends React.Component {
 	render(){
@@ -12,42 +13,7 @@ export class Slider extends React.Component {
                             <h2>With Locations you can find the best deals in your location</h2>
                         </div>
                     </div>
-
-                    <div className="form search-form horizontal no-background">
-                        <div className="container">
-                            <form>
-                                <div className="row">
-                                    <div className="col-md-4 col-sm-4">
-                                        <div className="form-group">
-                                            <input type="text" className="form-control" name="keyword" placeholder="Enter Location" id="address-autocomplete" />
-                                        </div>
-                                    </div>
-                                    <div className="col-md-4 col-sm-4">
-                                        <div className="form-group">
-                                            <select className="form-control selectpicker" name="category">
-                                                <option value="">Category</option>
-                                                <option value="1">Restaurant</option>
-                                                <option value="2">Event</option>
-                                                <option value="3">Adrenaline</option>
-                                                <option value="4">Sport</option>
-                                                <option value="5">Wellness</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div className="col-md-3 col-sm-4">
-                                        <div className="form-group">
-                                            <input type="text" className="form-control date-picker" name="min-price" placeholder="Event Date" />
-                                        </div>
-                                    </div>
-                                    <div className="col-md-1 col-sm-4">
-                                        <div className="form-group">
-                                            <button type="submit" className="btn btn-primary pull-right"><i className="fa fa-search"></i></button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
+                    <SearchContainer />
                 </div>
             </div>
             <div className="slider">
