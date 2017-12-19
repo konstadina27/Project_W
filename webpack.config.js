@@ -5,7 +5,8 @@ module.exports = {
   entry: './src/App.js',
   output: {
     filename: 'bundle.js',
-    path: path.resolve(__dirname, 'dist')
+    path: path.resolve(__dirname, 'dist'),
+    publicPath: '/'
   },
   module: {
 	  rules: [
@@ -39,6 +40,7 @@ module.exports = {
   contentBase: path.join(__dirname, "dist"),
   compress: true,
   port: 8080,
+  historyApiFallback: true,
 },
 
 };

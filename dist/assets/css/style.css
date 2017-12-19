@@ -26,6 +26,13 @@ Body copy:		'Lato', sans-serif; 14px;
 Headers:		'Lato', sans-serif;
 
 -------------------------------------------------------------------*/
+.prof-text{
+  margin-top:7px;
+  padding-bottom: 3px;
+  font-family: 'Lato', sans-serif;
+  border-bottom:solid 1px rgba(0,0,0,0.2);
+  opacity: 0.8;
+}
 /* 1. Header */
 body .primary-nav, body .secondary-nav {
   display: inline-block;
@@ -368,9 +375,10 @@ body .secondary-nav ul.navigation li.has-child > .wrapper > .nav-wrapper > ul > 
 }
 #page-header .secondary-nav {
   display: inline-block;
-  margin-right: 10px;
+  
 }
-#page-header .secondary-nav .image {
+
+#page-header .right .navigation .image {
   -moz-border-radius: 100%;
   -webkit-border-radius: 100%;
   border-radius: 100%;
@@ -476,7 +484,6 @@ body.nav-btn-only #page-header .nav-btn {
   display: block;
 }
 body.nav-btn-only #page-header .right {
-  padding-right: 40px;
 }
 body.nav-btn-only #page-header .primary-nav {
   -moz-border-radius: 3px;

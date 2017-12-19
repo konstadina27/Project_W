@@ -1,24 +1,32 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Header } from './components/Header/HeaderLadding';
+import { Navbar } from './components/Header/Navbar';
 import { PageContent } from './pages/HomePageContent/PageContent';
 import { PricingContent } from './pages/Pricing/PricingPageContent';
+import { ListingContent } from './pages/Listings/ListingPageContent';
+import { ProfileContent } from './pages/ProfilePage/ProfileContent';
+import { ProfileContentView } from './pages/ProfilePageView/ProfileViewContent';
 import { FooterContainer } from './components/Footer/FooterLadding';
-import { ListingContent } from './pages/Listings/LinstingPageContent';
 import { 
-	HashRouter as Router,
+	BrowserRouter as Router,
 	Route,
+	NavLink
 } from 'react-router-dom';
 
+import createBrowserHistory from 'history/createBrowserHistory';
+
+const history = createBrowserHistory()
 
 ReactDOM.render(
 	<div>
-		<Header />
 		<Router>
 			<div>
-				<Route exact path="/" component={PageContent} />
-			    <Route path="/pricing" component={PricingContent} />
-			    <Route path="/listing" component={ListingContent} />
+				<Navbar />
+				<Route exact path="/" component={PageContent}  history={history}/>
+			    <Route path="/pricing" component={PricingContent}  history={history}/>
+			    <Route path="/listing" component={ListingContent}  history={history}/>
+			    <Route path="/profile" component={ProfileContent}  history={history}/>
+			    <Route path="/profile-view" component={ProfileContentView}  history={history}/>
 			</div>
 		</Router>
 		<div className="page-wrapper">

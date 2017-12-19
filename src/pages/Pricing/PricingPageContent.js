@@ -18,7 +18,6 @@ export class PricingContent extends React.Component {
            			<InfoSection />
            			<PricingBoxContent />
 				</div>
-
 	    	</div>
 		);
 	}

@@ -1,8 +1,8 @@
 import React from 'react';
 import { 
-	HashRouter as Router,
+	BrowserRouter as Router,
 	Route,
-	Link 
+	NavLink 
 } from 'react-router-dom';
 
 export class Navbar extends React.Component {
@@ -10,21 +10,25 @@ export class Navbar extends React.Component {
 		return (
 			<Router>
 				<div>
-			       	<nav>
-			            <div className="left">
-			                <Link to="/" className="brand"><img src="assets/img/logo.png" alt="" /></Link>
-			            </div>
-			            <div className="right">
-			                <div className="primary-nav has-mega-menu">
-			                    <ul className="navigation">
-			                        <li className="active has-child"><Link to="/">Home</Link></li>
-			                        <li className="mega-menu-parent has-child"><Link to="/pricing">Pricing</Link></li>
-			                        <li className="has-child"><Link to="/listing">Listing</Link> </li>
-			                    </ul>
-			                </div>
-			            </div>
-			        </nav>
-			     </div>
+					<header id="page-header">
+						<nav>
+					        <div className="left">
+					            <NavLink to="/" className="brand"><img src="assets/img/logo.png" alt="" /></NavLink>
+					        </div>
+					        <div className="right">
+					            <div className="primary-nav has-mega-menu">
+					                <ul className="navigation">
+					                    <li className="active has-child"><NavLink to="/">Home</NavLink></li>
+					                    <li ><NavLink to="/pricing">Pricing</NavLink></li>
+					                    <li ><NavLink to="/listing">Listing</NavLink> </li>
+					                    <li><NavLink to="/profile" className="invisible-on-mobile">Edit Profile</NavLink></li>
+			                    		<li><NavLink to="/profile-view" className="invisible-on-mobile">View Profile</NavLink></li>
+					                </ul>
+					           </div>
+					        </div>
+					    </nav>
+					</header>
+				</div>
 		    </Router>
 		)
 	}

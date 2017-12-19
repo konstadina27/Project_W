@@ -2,12 +2,12 @@ import React from 'react';
 import { Slider } from './Slider/Slider';
 import { BlockRecentContainer } from './BlockRecent/BlockRecentLandingContainer';
 import { Listings } from './Listing/ListingLadding';
-import { SubSection } from './SubSection/SubSectionLadding';
+import { SubSection } from './SubSection/SubSectionLanding';
 import { PromotedSectionContainer } from './Promoted/PromotedSectionLandingContainer';
-import { EventSection } from './EventSection/EventSectionLadding';
+import { EventSectionContainer } from './EventSection/EventSectionLandingContainer';
 import { RatedSectionContainer } from './RatedSection/RatedSectionLandingContainer';
 import { BlogSectionContainer } from './BlogSection/BlogSectionLandingContainer';
-import { PartnerSection } from './PartnerSection/PartnerSectionLadding';
+import { PartnerSectionContainer } from './PartnerSection/PartnerSectionLandingContainer';
 
 
 export class PageContent extends React.Component {
@@ -20,11 +20,11 @@ export class PageContent extends React.Component {
 				<Listings />
 				<SubSection title="Subscribe and be notified about new locations"/>
 				<PromotedSectionContainer title="Promoted Locations" bTitle="Promote yours" />
-				<EventSection title="Events Near You" />
+				<EventSectionContainer title="Events Near You" />
 				<RatedSectionContainer title="Recently Rated Items" cTitle="Client’s Word"/>
 				<BlogSectionContainer />
 				<div className="container"><hr /></div>
-				<PartnerSection title="Partners"/>
+				<PartnerSectionContainer title="Partners"/>
 			</div>
 		);
 	}
