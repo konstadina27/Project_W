@@ -1,5 +1,5 @@
 import React from 'react';
-import { FooterWrapper , FooterNav }from './FooterLaddingContainer';
+import { FooterWrapper , FooterNav }from './FooterLanding';
 
 export class FooterContainer extends React.Component {
     render(){

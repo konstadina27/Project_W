@@ -6,7 +6,10 @@ import { PricingContent } from './pages/Pricing/PricingPageContent';
 import { ListingContent } from './pages/Listings/ListingPageContent';
 import { ProfileContent } from './pages/ProfilePage/ProfileContent';
 import { ProfileContentView } from './pages/ProfilePageView/ProfileViewContent';
-import { FooterContainer } from './components/Footer/FooterLadding';
+import { RegisterContent } from './pages/Register/RegisterContent';
+import { SignInContent } from './pages/SignIn/SignInContent';
+import { FooterContainer } from './components/Footer/FooterLandingContainer';
+
 import { 
 	BrowserRouter as Router,
 	Route,
@@ -27,6 +30,8 @@ ReactDOM.render(
 			    <Route path="/listing" component={ListingContent}  history={history}/>
 			    <Route path="/profile" component={ProfileContent}  history={history}/>
 			    <Route path="/profile-view" component={ProfileContentView}  history={history}/>
+			    <Route path="/register" component={RegisterContent}  history={history}/>
+			    <Route path="/signIN" component={SignInContent}  history={history}/>
 			</div>
 		</Router>
 		<div className="page-wrapper">
