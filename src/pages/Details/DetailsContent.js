@@ -2,6 +2,9 @@ import React from 'react';
 import {DetailsHeaderContainer} from './DetailsHeader/DetailsHeaderLandingContainer';
 import {CarouselContainer} from './Carousel/CarouselContainer';
 import {AboutListingContainer} from './AboutListing/AboutListingLandingContainer';
+import {ReviewsContainer} from './Reviews/ReviewsLandingContainer';
+import {ReviewsForm} from './Reviews/ReviewForm';
+import {SideBarContainer} from './SideBar/SideBarLandingContainer';
 
 export class Listing extends React.Component {
 	render(){
@@ -20,6 +23,11 @@ export class Listing extends React.Component {
            			<div className="row">
            				<div className="col-md-7 col-sm-7">
 			        		<AboutListingContainer />
+			        		<ReviewsContainer />
+			        		<ReviewsForm />
+			        	</div>
+			        	<div className="col-md-5 col-sm-5">
+			        		<SideBarContainer />
 			        	</div>
 			        </div>
 			    </div>
