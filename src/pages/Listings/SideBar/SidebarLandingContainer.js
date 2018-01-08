@@ -4,7 +4,6 @@ import { RecentSectionContainer } from '../RecentSection/RecentSectionLandingCon
 import { SortSectionContent } from '../SortSection/SortSectionLadding';
 import { RowlistingContainer } from '../Rowlisting/RowlistingLandingContainer';
 
-
 export class SideBarContent extends React.Component {
 	render(){
 		return(
@@ -16,12 +15,12 @@ export class SideBarContent extends React.Component {
                     </aside>
                 </div>
                 <div className="col-md-9 col-sm-9">
-                        <section className="page-title">
-                            <h1>Row Listing</h1>
-                        </section>
-                        <SortSectionContent />
-                        <RowlistingContainer />
-                    </div>
+                    <section className="page-title">
+                        <h1>Row Listing</h1>
+                    </section>
+                    <SortSectionContent />
+                    <RowlistingContainer />
+                </div>
             </div>
 		);
 	}

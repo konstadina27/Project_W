@@ -21,6 +21,8 @@ export class Navbar extends React.Component {
 					                    <li className="active has-child"><NavLink to="/">Home</NavLink></li>
 					                    <li ><NavLink to="/pricing">Pricing</NavLink></li>
 					                    <li ><NavLink to="/listing">Listing</NavLink> </li>
+					                    <li><NavLink to="/listing-details" className="invisible-on-mobile">Listing Details</NavLink></li>
+					                    <li><NavLink to="/editListing" className="invisible-on-mobile">Edit Listing</NavLink></li>
 					                    <li><NavLink to="/profile" className="invisible-on-mobile">Edit Profile</NavLink></li>
 			                    		<li><NavLink to="/profile-view" className="invisible-on-mobile">View Profile</NavLink></li>
 			                    		<li><NavLink to="/register" className="invisible-on-mobile">Register</NavLink></li>

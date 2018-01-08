@@ -1,5 +1,4 @@
 import React from 'react';
-import {SignIn} from './SignInLanding';
  
 export class SignInContent extends React.Component {
 	render(){
@@ -16,7 +15,24 @@ export class SignInContent extends React.Component {
 					            <section className="page-title">
 					                <h1>Sign In</h1>
 					            </section>
-					            <SignIn email="Email" password="Password" buttonText="Sign In"/>
+					            <section>
+					                <form className="form inputs-underline">
+					                    <div className="form-group">
+					                        <label htmlFor="email">Email</label>
+					                        <input type="email" className="form-control" name="email" id="email" placeholder="Your email" />
+					                    </div>
+					                    <div className="form-group">
+					                        <label htmlFor="password">Password</label>
+					                        <input type="password" className="form-control" name="password" id="password" placeholder="Your password" />
+					                    </div>
+					                    <div className="form-group center">
+					                        <button type="submit" className="btn btn-primary width-100">Sign In</button>
+					                    </div>
+
+					              	</form>
+					                <hr />
+					                <a href="#" data-modal-external-file="modal_reset_password.php" data-target="modal-reset-password">I have forgot my password</a>
+					            </section>
 					        </div>
 					    </div>
 			        </div>

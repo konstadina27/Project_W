@@ -14,8 +14,7 @@ export class RowlistingContainer extends React.Component {
 
           let rlists = rlist.map(list => {
 
-        		return  <Rowlisting key={list.id} ribbonClass={list.ribbonClass} ribbonT={list.ribbonT} info={list.info} type={list.type} name={list.name} address={list.address} img={list.img} data={list.data} reviews={list.reviews} latitude={list.latitude} longitude={list.longitude}/>
-
+        		return <Rowlisting key={list.id} ribbonClass={list.ribbonClass} ribbonT={list.ribbonT} info={list.info} type={list.type} name={list.name} address={list.address} img={list.img} data={list.data} reviews={list.reviews} latitude={list.latitude} longitude={list.longitude}/>
        		 })
 		return(
 			<section>

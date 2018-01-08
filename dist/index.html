@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="assets/css/style.css" type="text/css">
 
 </head>
-<body class="navigation-fixed">
+<body class="subpage-detail">
 	<div id="react-container"> </div>
 	<a href="#" class="to-top scroll" data-show-after-scroll="600"><i class="arrow_up"></i></a>
 
@@ -40,5 +40,12 @@
 	<script>
 	    autoComplete();
 	</script>
+<script>
+    rating(".visitor-rating");
+    var _latitude = 40.7344458;
+    var _longitude = -73.86704922;
+    var element = "map-detail";
+    simpleMap(_latitude,_longitude, element);
+</script>
 </body>
 </html>

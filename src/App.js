@@ -8,7 +8,10 @@ import { ProfileContent } from './pages/ProfilePage/ProfileContent';
 import { ProfileContentView } from './pages/ProfilePageView/ProfileViewContent';
 import { RegisterContent } from './pages/Register/RegisterContent';
 import { SignInContent } from './pages/SignIn/SignInContent';
+import { EditListingContent } from './pages/EditListing/EditListingContent';
 import { FooterContainer } from './components/Footer/FooterLandingContainer';
+import { Listing } from './pages/Details/DetailsContent';
+
 
 import { 
 	BrowserRouter as Router,
@@ -32,6 +35,8 @@ ReactDOM.render(
 			    <Route path="/profile-view" component={ProfileContentView}  history={history}/>
 			    <Route path="/register" component={RegisterContent}  history={history}/>
 			    <Route path="/signIN" component={SignInContent}  history={history}/>
+			    <Route path="/editlisting" component={EditListingContent}  history={history}/>
+			    <Route path="/listing-details" component={Listing}  history={history}/>
 			</div>
 		</Router>
 		<div className="page-wrapper">
