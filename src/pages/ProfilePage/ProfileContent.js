@@ -1,11 +1,10 @@
 import React from 'react';
-import {UserDetailsContainer} from './UserDetails/UserDetailsLandingContainer';
-import {AboutContainer} from './About/AboutLandingContainer';
-import {SocialContainer} from './Social/SocialLandingContainer';
-import {ChangePassContainer} from './Password/ChangePassLandingContainer';
+import {FormContent} from './Form/FormContent';
+import {ChangePassContent} from './Password/ChangePassContent';
 
  
 export class ProfileContent extends React.Component {
+
 	render(){
 		return(
 		    <div id="page-content">
@@ -21,21 +20,11 @@ export class ProfileContent extends React.Component {
 		            <section>
                			<div className="row">
                     		<div className="col-md-6 col-sm-6 col-md-offset-3 col-sm-offset-3">
-       							<form className="form inputs-underline">
-       								<UserDetailsContainer />
-       								<AboutContainer />
-       								<SocialContainer />
-	       							<section className="center">
-		                                <div className="form-group">
-		                                    <button type="submit" className="btn btn-primary btn-rounded">Save Changes</button>
-		                                </div>
-	                           		</section>
-                           		</form>
-                           		 <hr />
+       							<FormContent />
                     		</div>
                     	</div>
                     	<section>
-							<ChangePassContainer />
+							<ChangePassContent />
 						</section>
                    	</section>
 		        </div>

@@ -1,8 +1,8 @@
 /*------------------------------------------------------------------
-Project:	Mentor - Mentor & Coach HTML Template
-Version:	1.0
-Last change:	24.10.2016
-Assigned to:	ThemeStarz
+Project:  Mentor - Mentor & Coach HTML Template
+Version:  1.0
+Last change:  24.10.2016
+Assigned to:  ThemeStarz
 
 [Table of contents]
 
@@ -22,8 +22,8 @@ Color grey light: #fafafa;
 
 [Typography]
 
-Body copy:		'Lato', sans-serif; 14px;
-Headers:		'Lato', sans-serif;
+Body copy:    'Lato', sans-serif; 14px;
+Headers:    'Lato', sans-serif;
 
 -------------------------------------------------------------------*/
 .prof-text{
@@ -5073,10 +5073,16 @@ section:not(.block) h2 {
   margin-top: 100px;
 }
 .register,.sign{
-  margin-bottom: 90px;
+  margin-bottom: 47px;
 }
 .sign{
-  margin-bottom: 268px;
+  margin-bottom: 225px;
+}
+.reset{
+  margin-bottom: 387px;
+}
+.error{
+  margin-bottom: 245px;
 }
 #page-footer p {
   filter: progid:DXImageTransform.Microsoft.Alpha(enabled=false);

@@ -2,6 +2,7 @@ import React from 'react';
  
 export class About extends React.Component {
 	render(){
+        
 		return(
             <section>
                 <h3>{this.props.title}</h3>

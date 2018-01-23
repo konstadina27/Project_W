@@ -20,7 +20,7 @@ export class SearchContainer extends React.Component {
         })
     }
     handleSubmit(event) {
-        alert('A name was submitted: ' + this.state.category +" "+this.state.location);
+        console.log(this.state.category +" "+this.state.location);
         event.preventDefault();
       }
 	render(){

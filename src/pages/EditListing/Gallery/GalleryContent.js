@@ -1,6 +1,17 @@
 import React from 'react';
  
 export class GalleryContent extends React.Component {
+	constructor(props){
+		super(props);
+		this.state={
+			video:""
+		}
+	}
+	handleVideo(event){
+		this.setState({
+			video: event.target.value
+		})
+	}
 	render(){
 		return(
 			<section>
@@ -21,12 +32,13 @@ export class GalleryContent extends React.Component {
 			    </div>
 			    <div className="file-upload-previews"></div>
 			    <div className="file-upload">
-			        <input type="file" name="files[]" className="file-upload-input with-preview" multiple title="Click to add files" maxLength="10" accept="gif|jpg|png" />
+			        <input type="file" name="files[]" className="file-upload-input with-preview"
+			         ref={input => {this.fileInput = input}} />
 			        <span>Click or drag images here</span>
 			    </div>
 			    <div className="form-group">
 			        <label htmlFor="video">Video URL</label>
-			        <input type="text" className="form-control" name="video" id="video" placeholder="http://" />
+			        <input type="text" className="form-control" name="video" id="video" placeholder="http://" value={this.state.video} onChange={this.handleVideo.bind(this)}/>
 			    </div>
 			</section>
 		)

@@ -12,7 +12,6 @@ export class FooterContainer extends React.Component {
                 <FooterNav />
             </div>
         </footer>
-
         );
     }
 }

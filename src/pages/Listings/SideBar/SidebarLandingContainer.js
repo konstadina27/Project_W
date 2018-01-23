@@ -1,7 +1,7 @@
 import React from 'react';
-import { SearchFormContent } from '../Search/SearchFormLadding';
-import { RecentSectionContainer } from '../RecentSection/RecentSectionLandingContainer';
-import { SortSectionContent } from '../SortSection/SortSectionLadding';
+import { SearchFormContent } from '../../../components/Search/SearchFormLanding';
+import { RecentSectionContainer } from '../../../components/RecentSection/RecentSectionLandingContainer';
+import { SortSectionContent } from '../SortSection/SortSectionLanding';
 import { RowlistingContainer } from '../Rowlisting/RowlistingLandingContainer';
 
 export class SideBarContent extends React.Component {
@@ -10,8 +10,14 @@ export class SideBarContent extends React.Component {
             <div className="row">
                 <div className="col-md-3 col-sm-3">
                     <aside className="sidebar">
-                    	<SearchFormContent />
-                    	<RecentSectionContainer />
+                        <section>
+                            <h2>Search Filter</h2>
+                    	    <SearchFormContent />
+                        </section>
+                        <section>
+                            <h2>Recent Items</h2>
+                    	   <RecentSectionContainer />
+                        </section>
                     </aside>
                 </div>
                 <div className="col-md-9 col-sm-9">
