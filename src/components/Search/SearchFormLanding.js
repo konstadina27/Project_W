@@ -6,7 +6,8 @@ export class SearchFormContent extends React.Component {
         this.state={
             keyword:"",
             location:"Location",
-            category:""
+            category:"",
+            date:""
         }
     }
     handleChangeKeyword(event){
@@ -22,6 +23,11 @@ export class SearchFormContent extends React.Component {
     handleChangeCategory(event){
         this.setState({
             category:event.target.value
+        })
+    }
+    handleChangeDate(event){
+        this.setState({
+            date:event.target.value
         })
     }
     handleSubmit(event) {
@@ -58,7 +64,8 @@ export class SearchFormContent extends React.Component {
                         </select>
                     </div>
                     <div className="form-group">
-                        <input type="text" className="form-control date-picker" name="min-price" placeholder="Event Date" />
+                        <input type="text" className="form-control date-picker" name="min-price" placeholder="Event Date" 
+                        value={this.state.date} onChange={this.handleChangeDate.bind(this)}/>
                     </div>
                     <div className="form-group">
                         <div className="ui-slider" id="price-slider" data-value-min="10" data-value-max="400" data-value-type="price" data-currency="$" data-currency-placement="before">

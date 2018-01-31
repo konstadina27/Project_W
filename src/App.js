@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Navbar } from './components/Header/Navbar';
 import { PageContent } from './pages/HomePageContent/PageContent';
+import { PageResultContent } from './pages/HomePageResultContent/PageResultContent';
 import { PricingContent } from './pages/Pricing/PricingPageContent';
 import { ListingContent } from './pages/Listings/ListingPageContent';
 import { ProfileContent } from './pages/ProfilePage/ProfileContent';
@@ -25,6 +26,7 @@ import { MyListingContent } from './pages/MyListing/MyListingContent';
 
 
 
+
 import { 
 	BrowserRouter as Router,
 	Route,
@@ -40,6 +42,7 @@ ReactDOM.render(
 			<div>
 				<Navbar />
 				<Route exact path="/" component={PageContent}  history={history}/>
+				<Route path="/home-results" component={PageResultContent}  history={history}/>
 			    <Route path="/pricing" component={PricingContent}  history={history}/>
 			    <Route path="/listing" component={ListingContent}  history={history}/>
 			    <Route path="/profile" component={ProfileContent}  history={history}/>

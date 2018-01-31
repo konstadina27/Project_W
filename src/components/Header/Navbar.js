@@ -27,6 +27,7 @@ export class Navbar extends React.Component {
                                                 				<div className="col-md-3 col-sm-3">
                                                     				<h4 className="heading">General</h4>
                                                     				<ul>
+                                                    					<li><NavLink to="/home-results">Home Result Page</NavLink></li>
                                                         				<li><NavLink to="/faq">Faq</NavLink></li>
                                                         				<li ><NavLink to="/pricing">Pricing</NavLink></li>
                                                         				<li ><NavLink to="/listing">Listing</NavLink> </li>

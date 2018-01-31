@@ -6,7 +6,8 @@ export class SearchContainer extends React.Component {
 
 		this.state = { 
 			location:"",
-            category:"Category"
+            category:"",
+            date:""
         }
 	}
 	handleLocationChange(event) {
@@ -17,6 +18,11 @@ export class SearchContainer extends React.Component {
     handleCategoryChange(event) {
         this.setState({
             category: event.target.value
+        })
+    }
+    handleDateChange(event) {
+        this.setState({
+            date: event.target.value
         })
     }
     handleSubmit(event) {
@@ -40,7 +46,7 @@ export class SearchContainer extends React.Component {
                             <div className="col-md-4 col-sm-4">
                                 <div className="form-group">
                                     <select className="form-control selectpicker" name="category"  value={this.state.category} onChange={this.handleCategoryChange.bind(this)}>
-                                        <option value="category">Category</option>
+                                        <option value="">Category</option>
                                         <option value="Restaurant">Restaurant</option>
                                         <option value="Event">Event</option>
                                         <option value="Adrenaline">Adrenaline</option>
@@ -51,7 +57,8 @@ export class SearchContainer extends React.Component {
                             </div>
                             <div className="col-md-3 col-sm-4">
                                 <div className="form-group">
-                                    <input type="text" className="form-control date-picker" name="min-price" placeholder="Event Date" />
+                                    <input type="text" className="form-control date-picker" name="min-price" placeholder="Event Date" 
+                                    value={this.state.date} onChange={this.handleDateChange}/>
                                 </div>
                             </div>
                             <div className="col-md-1 col-sm-4">

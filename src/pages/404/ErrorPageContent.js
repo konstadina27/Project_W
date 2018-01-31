@@ -4,7 +4,7 @@ export class ErrorPageContent extends React.Component {
 	constructor(props){
 		super(props);
 		this.state={
-			keyword:""
+			keyword:"",
 		}
 	}
 	handleChangeKeyword(event){
@@ -12,11 +12,14 @@ export class ErrorPageContent extends React.Component {
 			keyword: event.target.value
 		})
 	}
+
 	handleSubmit(event){
 		console.log(this.state);
 		event.preventDefault();
 	}
+
 	render(){
+		 
 		return(
 	    <div id="page-content">
 	        <div className="container">
@@ -44,7 +47,8 @@ export class ErrorPageContent extends React.Component {
                		</div>
             	</div>
 	       	</div>
-	    </div>
+		</div>
+	 
 		)
 	}
 }
