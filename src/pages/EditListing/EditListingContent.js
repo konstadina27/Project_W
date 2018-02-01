@@ -9,6 +9,8 @@ export class EditListingContent extends React.Component {
 		super(props);
 		this.state={
 			editorState: EditorState.createEmpty(),
+			editorMusicState: EditorState.createEmpty(),
+			editorCeremonyState: EditorState.createEmpty(),
 			title:"",
 			catTitle:"",
 			category:"Category",
@@ -19,7 +21,7 @@ export class EditListingContent extends React.Component {
 			startDate:"",
 			lastDate:"",
 			equip:"",
-			extra_cost:"",
+			extraCost:"",
 			address:"",
 			region:"",
 			phone:"",
@@ -61,6 +63,16 @@ export class EditListingContent extends React.Component {
 	onEditorStateChange(editorState){
 	    this.setState({
 	      editorState,
+	    });
+  	};
+	onEditorMusicStateChange(editorMusicState){
+	    this.setState({
+	      editorMusicState,
+	    });
+  	};
+	onEditorCeremonyStateChange(editorCeremonyState){
+	    this.setState({
+	      editorCeremonyState,
 	    });
   	};
 	handleOpenHours(event){
@@ -110,7 +122,7 @@ export class EditListingContent extends React.Component {
 	}
 	handleExtraCost(event){
 		this.setState({
-			equip: event.target.value
+			extraCost: event.target.value
 		})
 	}
 	handleStartDate(event){
@@ -234,8 +246,14 @@ export class EditListingContent extends React.Component {
       }
     handleSubmit(event) {
     	this.state.editorState
+    	this.state.editorMusicState
+    	this.state.editorCeremonyState
 		const raw = JSON.stringify(convertToRaw(this.state.editorState.getCurrentContent()))
 		console.log(raw)
+		const rawMusic = JSON.stringify(convertToRaw(this.state.editorMusicState.getCurrentContent()))
+		console.log(rawMusic)
+		const rawCeremony = JSON.stringify(convertToRaw(this.state.editorCeremonyState.getCurrentContent()))
+		console.log(rawCeremony)
         console.log(this.state);
         event.preventDefault();
       }
@@ -292,7 +310,6 @@ export class EditListingContent extends React.Component {
 				                                    <label htmlFor="description">Description</label>
 				                                    <div>
 				                                     <Editor
-
 												       	editorState={this.state.editorState}
 												       	onEditorStateChange={this.onEditorStateChange.bind(this)}
 														wrapperClassName="wrapper-class"
@@ -329,7 +346,7 @@ export class EditListingContent extends React.Component {
 				                                        </select>
 				                                    </div>
 				                                </div>
-				                           		<div className="col-md-8 col-sm-8">
+				                           		<div className="col-md-5 col-sm-8">
 					                                <div className="form-group">
 					                                	<div className="col-md-12 col-sm-12">
 					                               			<label htmlFor="tags">Availability</label>
@@ -344,16 +361,24 @@ export class EditListingContent extends React.Component {
                                 						</div>
 					                                </div>
 				                                </div>
-				                                <div className="col-md-9 col-sm-9">
-					                                <div className="form-group">
-					                                    <label htmlFor="tags">Music Equipment</label>
-					                                    <input type="text" className="form-control" name="tags" id="tags" value={this.state.equip} onChange={this.handleEquip.bind(this)}  />
-					                                </div>
-				                                </div>
-				                           		<div className="col-md-3 col-sm-3">
+				                            	<div className="col-md-3 col-sm-3">
 					                                <div className="form-group">
 					                                    <label htmlFor="tags">Extra Cost/Equipment</label>
-					                                    <input type="text" className="form-control" name="tags" id="tags" value={this.state.extra_cost} onChange={this.handleExtraCost.bind(this)}  />
+					                                    <input type="text" className="form-control" name="tags" id="tags" value={this.state.extraCost} onChange={this.handleExtraCost.bind(this)}  />
+					                                </div>
+				                                </div>
+				                                <div className="col-md-12 col-sm-9">
+					                                <div className="form-group">
+					                                    <label htmlFor="tags">Music Equipment</label>
+					                                    <div>
+						                                    <Editor
+														       	editorMusicState={this.state.editorMusicState}
+														       	onEditorMusicStateChange={this.onEditorMusicStateChange.bind(this)}
+																wrapperClassName="wrapper-class"
+																editorClassName="editor-class"
+																toolbarClassName="toolbar-class"	
+															/>
+														</div>
 					                                </div>
 				                                </div>
 				                            </div>
@@ -732,18 +757,25 @@ export class EditListingContent extends React.Component {
 			                                            <div className="panel-body">
 			                                                <div className="wrapper">
 			                                                    <div className="row">
-			                                                        <div className="col-md-6 col-sm-6">
+			                                                        <div className="col-md-12 col-sm-6">
 			                                                            <div className="form-group">
 			                                                            	<label htmlFor="video">Title</label>
 			                                                                <input type="text" className="form-control" name="menu_title[]" placeholder="Title" 
 			                                                                value={this.state.ceremonyTitle} onChange={this.handleChangeCeremonyTilte.bind(this)}/>
 			                                                            </div>
 			                                                        </div>
-			                                                        <div className="col-md-6 col-sm-6">
+			                                                        <div className="col-md-12 col-sm-6">
 			                                                            <div className="form-group">
 			                                                           		<label htmlFor="video">Description</label>
-			                                                                <input type="text" className="form-control" name="menu_description[]" placeholder="Description"
-			                                                                value={this.state.ceremonyDesc} onChange={this.handleChangeCeremonyDesc.bind(this)}/>
+			                                                                <div>
+											                                    <Editor
+																			       	editorCeremonyState={this.state.editorCeremonyState}
+																			       	onEditorCeremonyStateChange={this.onEditorCeremonyStateChange.bind(this)}
+																					wrapperClassName="wrapper-class"
+																					editorClassName="editor-class"
+																					toolbarClassName="toolbar-class"	
+																				/>
+																			</div>
 			                                                            </div>
 			                                                        </div>
 			                                                        <div className="col-md-12 col-sm-12">
