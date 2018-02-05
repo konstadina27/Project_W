@@ -1,4 +1,5 @@
 import React from 'react';
+import {MenuContainer} from './MenuLandingContainer';
 
 export class SideBar extends React.Component {
 	render(){
@@ -18,6 +19,7 @@ export class SideBar extends React.Component {
                             <figure><i className="fa fa-envelope"></i><a href="#">{this.props.email}</a></figure>
                             <figure><i className="fa fa-phone"></i>{this.props.phone}</figure>
                             <figure><i className="fa fa-globe"></i><a href="#">{this.props.site}</a></figure>
+                            <figure><i className="fa fa-calendar"></i><a href="#">{this.props.date}</a></figure>
                         </address>
                     </div>
                 </section>
@@ -40,11 +42,15 @@ export class SideBar extends React.Component {
                         <dd>Closed</dd>
                     </dl>
                 </section>
-                <section>
-                    <h2>Share This Listing</h2>
-                    <div className="social-share"></div>
-                </section>
             </div>
+            <section>
+                <h2>Menu</h2>
+                <MenuContainer />
+            </section>
+            <section>
+                <h2>Share This Listing</h2>
+                <div className="social-share"></div>
+            </section>
 		</div>
 		)
 	}

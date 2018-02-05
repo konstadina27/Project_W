@@ -29,12 +29,13 @@ export class Navbar extends React.Component {
                                                     				<ul>
                                                     					<li><NavLink to="/home-results">Home Result Page</NavLink></li>
                                                         				<li><NavLink to="/faq">Faq</NavLink></li>
-                                                        				<li ><NavLink to="/pricing">Pricing</NavLink></li>
-                                                        				<li ><NavLink to="/listing">Listing</NavLink> </li>
+                                                        				<li><NavLink to="/pricing">Pricing</NavLink></li>
+                                                        				<li><NavLink to="/listing">Listing</NavLink> </li>
                                                         				<li><NavLink to="/editListing">Edit Listing</NavLink></li>
                                                         				<li><NavLink to="/listing-details">Listing Details</NavLink></li>
 																		<li><NavLink to="/agentListing">Agent Listing</NavLink></li>
 					                    								<li><NavLink to="/agentDetails">Agent Details</NavLink></li>
+					                    								<li><NavLink to="/agenteditListing">Agent Edit Listing</NavLink></li>
                                                     				</ul>
                                                 				</div>
 				                                                <div className="col-md-3 col-sm-3">
@@ -51,6 +52,7 @@ export class Navbar extends React.Component {
 				                                                    <h4 className="heading">Other</h4>
 				                                                    <ul>
 				                                                        <li><NavLink to="/errorPage">404 Error Page</NavLink></li>
+				                                                        <li><NavLink to="/howItWorks">How it works</NavLink></li>
 				                                                        <li><NavLink to="/terms" target="_self">Terms & Conditions</NavLink></li>
 				                                                    </ul>
 				                                                </div>

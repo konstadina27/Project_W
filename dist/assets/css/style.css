@@ -26,6 +26,9 @@ Body copy:    'Lato', sans-serif; 14px;
 Headers:    'Lato', sans-serif;
 
 -------------------------------------------------------------------*/
+.cer-description{
+  margin-top: 15px; 
+}
 .prof-text{
   margin-top:7px;
   padding-bottom: 3px;
@@ -5301,7 +5304,13 @@ section:not(.block) h2 {
   box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2);
   -moz-border-radius: 100%;
   -webkit-border-radius: 100%;
-  border-radius: 100%;
+  width: 80px;
+  height: 80px;
+}
+.review .image2 > div {
+  -moz-box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2);
+  -webkit-box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2);
   width: 80px;
   height: 80px;
 }
@@ -6064,7 +6073,7 @@ section:not(.block) h2 {
 .user-details .user-image .image .bg-transfer {
   -moz-border-radius: 100%;
   -webkit-border-radius: 100%;
-  border-radius: 100%;
+
   -moz-box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2);
   -webkit-box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2);
   box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2);

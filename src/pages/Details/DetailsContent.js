@@ -4,6 +4,7 @@ import {CarouselContainer} from './Carousel/CarouselContainer';
 import {AboutListingContainer} from './AboutListing/AboutListingLandingContainer';
 import {ReviewsContainer} from './Reviews/ReviewsLandingContainer';
 import {ReviewsForm} from './Reviews/ReviewForm';
+import {CeremonyContainer} from './Ceremony/CeremonyLandingContainer';
 import {SideBarContainer} from './SideBar/SideBarLandingContainer';
 
 export class Listing extends React.Component {
@@ -23,7 +24,14 @@ export class Listing extends React.Component {
            			<div className="row">
            				<div className="col-md-7 col-sm-7">
 			        		<AboutListingContainer />
-			        		<ReviewsContainer />
+			        		<section>
+                				<h2>Reviews</h2>
+			        			<ReviewsContainer />
+			        		</section>
+			        		<section>
+                				<h2>Ceremony Packages</h2>
+			        			<CeremonyContainer />
+			        		</section>
 			        		<ReviewsForm />
 			        	</div>
 			        	<div className="col-md-5 col-sm-5">

@@ -59,7 +59,7 @@ export class ArticleContainer extends React.Component {
           ];
     
       let final = ulist.map(data => {
-                  return <Article key={data.id} hidden={data.hidden} textHidden={data.textHidden} img={data.img} title2={data.title2}title={data.title} user={data.user} date={data.date} tags={data.tags} text={data.text} text2={data.text2}/> 
+                  return <Article key={data.id} hidden={data.hidden} textHidden={data.textHidden} img={data.img} title2={data.title2} title={data.title} user={data.user} date={data.date} tags={data.tags} text={data.text} text2={data.text2}/> 
                       });
         
     return(

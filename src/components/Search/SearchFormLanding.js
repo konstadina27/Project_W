@@ -7,7 +7,9 @@ export class SearchFormContent extends React.Component {
             keyword:"",
             location:"Location",
             category:"",
-            date:""
+            date:"",
+            valueMin:"",
+            valueMax:""
         }
     }
     handleChangeKeyword(event){
@@ -28,6 +30,11 @@ export class SearchFormContent extends React.Component {
     handleChangeDate(event){
         this.setState({
             date:event.target.value
+        })
+    }
+    handleChangeValue(event){
+        this.setState({
+            [event.target.name]: event.target.value 
         })
     }
     handleSubmit(event) {
@@ -68,10 +75,10 @@ export class SearchFormContent extends React.Component {
                         value={this.state.date} onChange={this.handleChangeDate.bind(this)}/>
                     </div>
                     <div className="form-group">
-                        <div className="ui-slider" id="price-slider" data-value-min="10" data-value-max="400" data-value-type="price" data-currency="$" data-currency-placement="before">
+                        <div className="ui-slider" id="price-slider" data-value-min="20" data-value-max="400" data-value-type="price" data-currency="$" data-currency-placement="before">
                             <div className="values clearfix">
-                                <input className="value-min" name="value-min[]" readOnly />
-                                <input className="value-max" name="value-max[]" readOnly />
+                                <input className="value-min" name="valueMin" value={this.state.valueMin} onChange={this.handleChangeValue.bind(this)}/>
+                                <input className="value-max" name="valueMax" value={this.state.valueMax} onChange={this.handleChangeValue.bind(this)}/>
                             </div>
                             <div className="element"></div>
                         </div>
