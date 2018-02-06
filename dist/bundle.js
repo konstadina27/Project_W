@@ -14648,15 +14648,15 @@ var _AgentListingContent = __webpack_require__(330);
 
 var _AgentDetailContent = __webpack_require__(333);
 
-var _ErrorPageContent = __webpack_require__(339);
+var _ErrorPageContent = __webpack_require__(341);
 
-var _BlogContent = __webpack_require__(340);
+var _BlogContent = __webpack_require__(342);
 
-var _BlogDetailsContent = __webpack_require__(343);
+var _BlogDetailsContent = __webpack_require__(345);
 
-var _MyListingContent = __webpack_require__(352);
+var _MyListingContent = __webpack_require__(354);
 
-var _HowItWorksContent = __webpack_require__(355);
+var _HowItWorksContent = __webpack_require__(357);
 
 var _reactRouterDom = __webpack_require__(23);
 
@@ -53801,7 +53801,7 @@ var AgentEditListingContent = exports.AgentEditListingContent = function (_React
 		var _this = _possibleConstructorReturn(this, (AgentEditListingContent.__proto__ || Object.getPrototypeOf(AgentEditListingContent)).call(this, props));
 
 		_this.state = {
-			editorCeremonyState: _draftJs.EditorState.createEmpty(),
+			editorServicesState: _draftJs.EditorState.createEmpty(),
 			title: "",
 			catTitle: "",
 			category: "Category",
@@ -53819,16 +53819,17 @@ var AgentEditListingContent = exports.AgentEditListingContent = function (_React
 			youtube: "",
 			twitter: "",
 			pinterest: "",
-			ceremonyTitle: "",
-			ceremonyDesc: "",
-			ceremonyVideo: ""
+			servicesTitle: "",
+			servicesDesc: "",
+			servicesVideo: "",
+			servicesPrice: ""
 		};
 		return _this;
 	}
 
 	_createClass(AgentEditListingContent, [{
-		key: 'onEditorCeremonyStateChange',
-		value: function onEditorCeremonyStateChange(editorCeremonyState) {
+		key: 'onEditorServicesStateChange',
+		value: function onEditorServicesStateChange(editorCeremonyState) {
 			this.setState({
 				editorCeremonyState: editorCeremonyState
 			});
@@ -53953,44 +53954,45 @@ var AgentEditListingContent = exports.AgentEditListingContent = function (_React
 			});
 		}
 	}, {
-		key: 'handleChangeCeremonyTilte',
-		value: function handleChangeCeremonyTilte(event) {
+		key: 'handleChangeServicesTitle',
+		value: function handleChangeServicesTitle(event) {
 			this.setState({
-				menuTitle: event.target.value
+				servicesTitle: event.target.value
 			});
 		}
 	}, {
-		key: 'handleChangeCeremonyDesc',
-		value: function handleChangeCeremonyDesc(event) {
+		key: 'handleChangeServicesDesc',
+		value: function handleChangeServicesDesc(event) {
 			this.setState({
-				menuDesc: event.target.value
+				servicesDesc: event.target.value
 			});
 		}
 	}, {
-		key: 'handleCeremonyVideo',
-		value: function handleCeremonyVideo(event) {
+		key: 'handleServicesVideo',
+		value: function handleServicesVideo(event) {
 			this.setState({
-				menuVideo: event.target.value
+				servicesVideo: event.target.value
 			});
 		}
 	}, {
-		key: 'handleMenuSubmit',
-		value: function handleMenuSubmit(event) {
+		key: 'handleChangeServicesPrice',
+		value: function handleChangeServicesPrice(event) {
+			this.setState({
+				servicesPrice: event.target.value
+			});
+		}
+	}, {
+		key: 'handleServicesSubmit',
+		value: function handleServicesSubmit(event) {
 			console.log(this.state);
 			event.preventDefault();
 		}
 	}, {
 		key: 'handleSubmit',
 		value: function handleSubmit(event) {
-			this.state.editorState;
-			this.state.editorMusicState;
-			this.state.editorCeremonyState;
-			var raw = JSON.stringify((0, _draftJs.convertToRaw)(this.state.editorState.getCurrentContent()));
-			console.log(raw);
-			var rawMusic = JSON.stringify((0, _draftJs.convertToRaw)(this.state.editorMusicState.getCurrentContent()));
-			console.log(rawMusic);
-			var rawCeremony = JSON.stringify((0, _draftJs.convertToRaw)(this.state.editorCeremonyState.getCurrentContent()));
-			console.log(rawCeremony);
+			this.state.editorServicesState;
+			var rawService = JSON.stringify((0, _draftJs.convertToRaw)(this.state.editorSErvicesState.getCurrentContent()));
+			console.log(rawService);
 			console.log(this.state);
 			event.preventDefault();
 		}
@@ -54205,7 +54207,7 @@ var AgentEditListingContent = exports.AgentEditListingContent = function (_React
 													_react2.default.createElement(
 														'label',
 														{ htmlFor: 'title' },
-														'Cost Per Person'
+														'Minimun Cost '
 													),
 													_react2.default.createElement('input', { type: 'text', className: 'form-control', name: 'title', id: 'title',
 														value: this.state.cost, onChange: this.handleCost.bind(this) })
@@ -54535,7 +54537,7 @@ var AgentEditListingContent = exports.AgentEditListingContent = function (_React
 																{ className: 'row' },
 																_react2.default.createElement(
 																	'div',
-																	{ className: 'col-md-12 col-sm-6' },
+																	{ className: 'col-md-8 col-sm-8' },
 																	_react2.default.createElement(
 																		'div',
 																		{ className: 'form-group' },
@@ -54545,12 +54547,27 @@ var AgentEditListingContent = exports.AgentEditListingContent = function (_React
 																			'Title'
 																		),
 																		_react2.default.createElement('input', { type: 'text', className: 'form-control', name: 'menu_title[]', placeholder: 'Title',
-																			value: this.state.ceremonyTitle, onChange: this.handleChangeCeremonyTilte.bind(this) })
+																			value: this.state.servicesTitle, onChange: this.handleChangeServicesTitle.bind(this) })
 																	)
 																),
 																_react2.default.createElement(
 																	'div',
-																	{ className: 'col-md-12 col-sm-6' },
+																	{ className: 'col-md-4 col-sm-4' },
+																	_react2.default.createElement(
+																		'div',
+																		{ className: 'form-group' },
+																		_react2.default.createElement(
+																			'label',
+																			{ htmlFor: 'video' },
+																			'Services Price'
+																		),
+																		_react2.default.createElement('input', { type: 'text', className: 'form-control', name: 'menu_title[]',
+																			value: this.state.servicesPrice, onChange: this.handleChangeServicesPrice.bind(this) })
+																	)
+																),
+																_react2.default.createElement(
+																	'div',
+																	{ className: 'col-md-12 col-sm-12' },
 																	_react2.default.createElement(
 																		'div',
 																		{ className: 'form-group' },
@@ -54563,8 +54580,8 @@ var AgentEditListingContent = exports.AgentEditListingContent = function (_React
 																			'div',
 																			null,
 																			_react2.default.createElement(_reactDraftWysiwyg.Editor, {
-																				editorCeremonyState: this.state.editorCeremonyState,
-																				onEditorCeremonyStateChange: this.onEditorCeremonyStateChange.bind(this),
+																				editorServicesState: this.state.editorServicesState,
+																				onEditorCeremonyStateChange: this.onEditorServicesStateChange.bind(this),
 																				wrapperClassName: 'wrapper-class',
 																				editorClassName: 'editor-class',
 																				toolbarClassName: 'toolbar-class'
@@ -54584,7 +54601,7 @@ var AgentEditListingContent = exports.AgentEditListingContent = function (_React
 																			'Ceremony Video URL'
 																		),
 																		_react2.default.createElement('input', { type: 'text', className: 'form-control', name: 'video', id: 'video', placeholder: 'http://',
-																			value: this.state.ceremonyVideo, onChange: this.handleCeremonyVideo.bind(this) })
+																			value: this.state.servicesVideo, onChange: this.handleServicesVideo.bind(this) })
 																	)
 																),
 																_react2.default.createElement(
@@ -54633,7 +54650,7 @@ var AgentEditListingContent = exports.AgentEditListingContent = function (_React
 															{ className: 'center' },
 															_react2.default.createElement(
 																'button',
-																{ onSubmit: this.handleMenuSubmit.bind(this), className: 'btn btn-rounded btn-primary btn-framed btn-light-frame btn-xs icon duplicate' },
+																{ onSubmit: this.handleServicesSubmit.bind(this), className: 'btn btn-rounded btn-primary btn-framed btn-light-frame btn-xs icon duplicate' },
 																_react2.default.createElement('i', { className: 'fa fa-plus' }),
 																'Add another meal'
 															)
@@ -55849,11 +55866,11 @@ var CeremonyContainer = exports.CeremonyContainer = function (_React$Component) 
 	_createClass(CeremonyContainer, [{
 		key: 'render',
 		value: function render() {
-			var rlist = [{ id: "1", collapseId: "#collapse1", panelId: "collapse1", title: "Ceremony Package 1", desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco", url: "www.youtube.com" }, { id: "2", collapseId: "#collapse2", panelId: "collapse2", title: "Ceremony Package 2", desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco", url: "www.youtube.com" }, { id: "3", collapseId: "#collapse3", panelId: "collapse3", title: "Ceremony Package 3", desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco", url: "www.youtube.com" }];
+			var rlist = [{ id: "1", collapsed: "false", collapseId: "#collapse1", panelId: "collapse1", title: "Ceremony Package 1", desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco", url: "www.youtube.com" }, { id: "2", collapsed: "false", collapseId: "#collapse2", panelId: "collapse2", title: "Ceremony Package 2", desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco", url: "www.youtube.com" }, { id: "3", collapsed: "false", collapseId: "#collapse3", panelId: "collapse3", title: "Ceremony Package 3", desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco", url: "www.youtube.com" }];
 
 			var rlists = rlist.map(function (list) {
 
-				return _react2.default.createElement(_CeremonyLanding.Ceremony, { key: list.id, collapseId: list.collapseId, panelId: list.panelId, title: list.title, desc: list.desc, url: list.url });
+				return _react2.default.createElement(_CeremonyLanding.Ceremony, { key: list.id, collapsed: list.collapsed, collapseId: list.collapseId, panelId: list.panelId, title: list.title, desc: list.desc, url: list.url });
 			});
 			return _react2.default.createElement(
 				'div',
@@ -55923,38 +55940,38 @@ var Ceremony = exports.Ceremony = function (_React$Component) {
 								{ className: 'panel-title' },
 								_react2.default.createElement(
 									'a',
-									{ 'data-toggle': 'collapse', 'data-parent': '#accordion', href: this.props.collapseId },
+									{ 'data-toggle': 'collapse', 'aria-expanded': this.props.collapsed, 'data-parent': '#accordion', href: this.props.collapseId },
 									this.props.title
 								)
-							)
-						),
-						_react2.default.createElement(
-							'div',
-							{ id: this.props.panelId, className: 'panel-collapse collapse in' },
+							),
 							_react2.default.createElement(
 								'div',
-								{ className: 'panel-body' },
+								{ id: this.props.panelId, className: 'collapse' },
 								_react2.default.createElement(
 									'div',
-									{ className: 'row' },
-									_react2.default.createElement(_imgContainer.ImageContainer, null)
-								),
-								_react2.default.createElement(
-									'div',
-									{ className: 'cer-description' },
+									{ className: 'panel-body' },
 									_react2.default.createElement(
-										'p',
-										null,
-										this.props.desc,
-										' '
+										'div',
+										{ className: 'row' },
+										_react2.default.createElement(_imgContainer.ImageContainer, null)
 									),
 									_react2.default.createElement(
-										'p',
-										null,
+										'div',
+										{ className: 'cer-description' },
 										_react2.default.createElement(
-											'a',
-											{ href: '' },
-											this.props.url
+											'p',
+											null,
+											this.props.desc,
+											' '
+										),
+										_react2.default.createElement(
+											'p',
+											null,
+											_react2.default.createElement(
+												'a',
+												{ href: '' },
+												this.props.url
+											)
 										)
 									)
 								)
@@ -58963,13 +58980,15 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _AgentInfo = __webpack_require__(334);
+var _AgentInfoLandingContainer = __webpack_require__(334);
 
-var _FeaturedListingLandingContainer = __webpack_require__(335);
+var _FeaturedListingLandingContainer = __webpack_require__(336);
 
-var _ListingLandingContainer = __webpack_require__(337);
+var _ListingLandingContainer = __webpack_require__(338);
 
 var _SearchFormLanding = __webpack_require__(18);
+
+var _CarouselContainer = __webpack_require__(340);
 
 var _RecentSectionLandingContainer = __webpack_require__(19);
 
@@ -59033,15 +59052,84 @@ var AgentDetailsContent = exports.AgentDetailsContent = function (_React$Compone
 							'div',
 							{ className: 'col-md-9 col-sm-9' },
 							_react2.default.createElement(
-								'section',
-								{ className: 'page-title' },
+								'div',
+								{ className: 'col-md-7 col-sm-7' },
 								_react2.default.createElement(
-									'h1',
-									null,
-									'Jane Doe'
+									'div',
+									{ className: 'col-md-3 col-sm-2' },
+									_react2.default.createElement(
+										'div',
+										{ className: 'review' },
+										_react2.default.createElement(
+											'div',
+											{ className: 'image' },
+											_react2.default.createElement(
+												'div',
+												{ className: 'bg-transfer' },
+												_react2.default.createElement('img', { src: 'assets/img/person-01.jpg', alt: '' })
+											)
+										)
+									)
+								),
+								_react2.default.createElement(
+									'div',
+									{ className: 'col-md-5 col-sm-5' },
+									_react2.default.createElement(
+										'div',
+										{ className: 'page-title' },
+										_react2.default.createElement(
+											'h1',
+											null,
+											'Jane Doe'
+										)
+									)
 								)
 							),
-							_react2.default.createElement(_AgentInfo.AgentInfo, null),
+							_react2.default.createElement(_AgentInfoLandingContainer.AgentInfoContainer, null)
+						),
+						_react2.default.createElement(
+							'div',
+							{ className: 'col-md-3 col-sm-3' },
+							_react2.default.createElement(
+								'aside',
+								{ className: 'sidebar' },
+								_react2.default.createElement(
+									'section',
+									null,
+									_react2.default.createElement(
+										'h2',
+										null,
+										'Search Filter'
+									),
+									_react2.default.createElement(_SearchFormLanding.SearchFormContent, null)
+								)
+							)
+						)
+					)
+				),
+				_react2.default.createElement(_CarouselContainer.CarouselContainer, null),
+				_react2.default.createElement(
+					'div',
+					{ className: 'container' },
+					_react2.default.createElement(
+						'div',
+						{ className: 'row' },
+						_react2.default.createElement(
+							'div',
+							{ className: 'col-md-7 col-sm-7' },
+							_react2.default.createElement('div', { id: 'gallery-nav' })
+						)
+					)
+				),
+				_react2.default.createElement(
+					'div',
+					{ className: 'container' },
+					_react2.default.createElement(
+						'div',
+						{ className: 'row' },
+						_react2.default.createElement(
+							'div',
+							{ className: 'col-md-9 col-sm-9' },
 							_react2.default.createElement(
 								'section',
 								null,
@@ -59063,16 +59151,6 @@ var AgentDetailsContent = exports.AgentDetailsContent = function (_React$Compone
 										{ className: 'row' },
 										_react2.default.createElement(_FeaturedListingLandingContainer.FeaturedListingContainer, null)
 									)
-								),
-								_react2.default.createElement(
-									'section',
-									null,
-									_react2.default.createElement(
-										'h3',
-										null,
-										'All Listings'
-									),
-									_react2.default.createElement(_ListingLandingContainer.ListingContainer, null)
 								)
 							)
 						),
@@ -59088,22 +59166,22 @@ var AgentDetailsContent = exports.AgentDetailsContent = function (_React$Compone
 									_react2.default.createElement(
 										'h2',
 										null,
-										'Search Filter'
-									),
-									_react2.default.createElement(_SearchFormLanding.SearchFormContent, null)
-								),
-								_react2.default.createElement(
-									'section',
-									null,
-									_react2.default.createElement(
-										'h2',
-										null,
 										'Recent Items'
 									),
 									_react2.default.createElement(_RecentSectionLandingContainer.RecentSectionContainer, null)
 								)
 							)
 						)
+					),
+					_react2.default.createElement(
+						'section',
+						null,
+						_react2.default.createElement(
+							'h3',
+							null,
+							'All Listings'
+						),
+						_react2.default.createElement(_ListingLandingContainer.ListingContainer, null)
 					)
 				)
 			);
@@ -59115,6 +59193,59 @@ var AgentDetailsContent = exports.AgentDetailsContent = function (_React$Compone
 
 /***/ }),
 /* 334 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+exports.AgentInfoContainer = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _AgentInfoLanding = __webpack_require__(335);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var AgentInfoContainer = exports.AgentInfoContainer = function (_React$Component) {
+	_inherits(AgentInfoContainer, _React$Component);
+
+	function AgentInfoContainer() {
+		_classCallCheck(this, AgentInfoContainer);
+
+		return _possibleConstructorReturn(this, (AgentInfoContainer.__proto__ || Object.getPrototypeOf(AgentInfoContainer)).apply(this, arguments));
+	}
+
+	_createClass(AgentInfoContainer, [{
+		key: 'render',
+		value: function render() {
+			return _react2.default.createElement(
+				'div',
+				null,
+				_react2.default.createElement(_AgentInfoLanding.AgentInfo, { img: 'assets/img/person-01.jpg', name: 'Jane Doe', address: '3858 Marion Street Morrisville, VT 05661',
+					desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam facilisis aliquam finibus. Nullam at ante et nulla vehicula euismod ut eget urna.',
+					phone: '(123) 456 789', email: 'jane.doe@example.com', date: '09.09.2018', price: '1000', site: 'www.janedoe.com' })
+			);
+		}
+	}]);
+
+	return AgentInfoContainer;
+}(_react2.default.Component);
+
+/***/ }),
+/* 335 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -59159,28 +59290,14 @@ var AgentInfo = exports.AgentInfo = function (_React$Component) {
 					{ className: "subject-detail" },
 					_react2.default.createElement(
 						"div",
-						{ className: "image" },
-						_react2.default.createElement(
-							"div",
-							{ className: "bg-transfer" },
-							_react2.default.createElement("img", { src: "assets/img/person-01-big.jpg", alt: "" })
-						)
-					),
-					_react2.default.createElement(
-						"div",
 						{ className: "description" },
 						_react2.default.createElement(
 							"section",
 							{ className: "name" },
 							_react2.default.createElement(
-								"h3",
-								null,
-								"Jane Doe"
-							),
-							_react2.default.createElement(
 								"p",
 								null,
-								"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam facilisis aliquam finibus. Nullam at ante et nulla vehicula euismod ut eget urna."
+								this.props.desc
 							)
 						),
 						_react2.default.createElement(
@@ -59189,8 +59306,15 @@ var AgentInfo = exports.AgentInfo = function (_React$Component) {
 							_react2.default.createElement(
 								"figure",
 								null,
+								_react2.default.createElement("i", { className: "fa fa-map-marker" }),
+								this.props.address,
+								" "
+							),
+							_react2.default.createElement(
+								"figure",
+								null,
 								_react2.default.createElement("i", { className: "fa fa-phone" }),
-								"(123) 456 789"
+								this.props.phone
 							),
 							_react2.default.createElement(
 								"figure",
@@ -59199,9 +59323,37 @@ var AgentInfo = exports.AgentInfo = function (_React$Component) {
 									"a",
 									{ href: "#" },
 									_react2.default.createElement("i", { className: "fa fa-envelope" }),
-									"jane.doe@example.com"
+									this.props.email
+								)
+							),
+							_react2.default.createElement(
+								"figure",
+								null,
+								_react2.default.createElement("i", { className: "fa fa-calendar" }),
+								this.props.date
+							),
+							_react2.default.createElement(
+								"figure",
+								null,
+								_react2.default.createElement("i", { className: "fa fa-globe" }),
+								_react2.default.createElement(
+									"a",
+									{ href: "#" },
+									this.props.site
 								)
 							)
+						),
+						_react2.default.createElement(
+							"figure",
+							null,
+							_react2.default.createElement(
+								"p",
+								null,
+								"Prices start at: "
+							),
+							_react2.default.createElement("i", { className: "fa fa-eur" }),
+							" ",
+							this.props.price
 						),
 						_react2.default.createElement(
 							"section",
@@ -59222,6 +59374,11 @@ var AgentInfo = exports.AgentInfo = function (_React$Component) {
 								_react2.default.createElement("i", { className: "social_youtube" })
 							)
 						)
+					),
+					_react2.default.createElement(
+						"div",
+						{ className: "image" },
+						_react2.default.createElement("div", { className: "map height-350px", id: "map-detail" })
 					)
 				)
 			);
@@ -59232,7 +59389,7 @@ var AgentInfo = exports.AgentInfo = function (_React$Component) {
 }(_react2.default.Component);
 
 /***/ }),
-/* 335 */
+/* 336 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -59249,7 +59406,7 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _FeaturedListingLanding = __webpack_require__(336);
+var _FeaturedListingLanding = __webpack_require__(337);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -59289,7 +59446,7 @@ var FeaturedListingContainer = exports.FeaturedListingContainer = function (_Rea
 }(_react2.default.Component);
 
 /***/ }),
-/* 336 */
+/* 337 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -59428,7 +59585,7 @@ var FeaturedListing = exports.FeaturedListing = function (_React$Component) {
 }(_react2.default.Component);
 
 /***/ }),
-/* 337 */
+/* 338 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -59445,7 +59602,7 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _ListingLanding = __webpack_require__(338);
+var _ListingLanding = __webpack_require__(339);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -59485,7 +59642,7 @@ var ListingContainer = exports.ListingContainer = function (_React$Component) {
 }(_react2.default.Component);
 
 /***/ }),
-/* 338 */
+/* 339 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -59642,7 +59799,108 @@ var Controls = exports.Controls = function (_React$Component2) {
 }(_react2.default.Component);
 
 /***/ }),
-/* 339 */
+/* 340 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+exports.CarouselContainer = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var CarouselContainer = exports.CarouselContainer = function (_React$Component) {
+	_inherits(CarouselContainer, _React$Component);
+
+	function CarouselContainer() {
+		_classCallCheck(this, CarouselContainer);
+
+		return _possibleConstructorReturn(this, (CarouselContainer.__proto__ || Object.getPrototypeOf(CarouselContainer)).apply(this, arguments));
+	}
+
+	_createClass(CarouselContainer, [{
+		key: "render",
+		value: function render() {
+			return _react2.default.createElement(
+				"section",
+				null,
+				_react2.default.createElement(
+					"div",
+					{ className: "gallery detail" },
+					_react2.default.createElement(
+						"div",
+						{ className: "owl-carousel", "data-owl-items": "3", "data-owl-loop": "1", "data-owl-auto-width": "1", "data-owl-nav": "1", "data-owl-dots": "0", "data-owl-margin": "2", "data-owl-nav-container": "#gallery-nav" },
+						_react2.default.createElement(
+							"div",
+							{ className: "image" },
+							_react2.default.createElement(
+								"div",
+								{ className: "bg-transfer" },
+								_react2.default.createElement("img", { src: "assets/img/items/4.jpg", alt: "" })
+							)
+						),
+						_react2.default.createElement(
+							"div",
+							{ className: "image" },
+							_react2.default.createElement(
+								"div",
+								{ className: "bg-transfer" },
+								_react2.default.createElement("img", { src: "assets/img/items/4.jpg", alt: "" })
+							)
+						),
+						_react2.default.createElement(
+							"div",
+							{ className: "image" },
+							_react2.default.createElement(
+								"div",
+								{ className: "bg-transfer" },
+								_react2.default.createElement("img", { src: "assets/img/items/4.jpg", alt: "" })
+							)
+						),
+						_react2.default.createElement(
+							"div",
+							{ className: "image" },
+							_react2.default.createElement(
+								"div",
+								{ className: "bg-transfer" },
+								_react2.default.createElement("img", { src: "assets/img/items/4.jpg", alt: "" })
+							)
+						),
+						_react2.default.createElement(
+							"div",
+							{ className: "image" },
+							_react2.default.createElement(
+								"div",
+								{ className: "bg-transfer" },
+								_react2.default.createElement("img", { src: "assets/img/items/4.jpg", alt: "" })
+							)
+						)
+					)
+				)
+			);
+		}
+	}]);
+
+	return CarouselContainer;
+}(_react2.default.Component);
+
+/***/ }),
+/* 341 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -59786,7 +60044,7 @@ var ErrorPageContent = exports.ErrorPageContent = function (_React$Component) {
 }(_react2.default.Component);
 
 /***/ }),
-/* 340 */
+/* 342 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -59803,7 +60061,7 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _ArticleLandingContainer = __webpack_require__(341);
+var _ArticleLandingContainer = __webpack_require__(343);
 
 var _PageNav = __webpack_require__(29);
 
@@ -59924,7 +60182,7 @@ var BlogContent = exports.BlogContent = function (_React$Component) {
 }(_react2.default.Component);
 
 /***/ }),
-/* 341 */
+/* 343 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -59941,7 +60199,7 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _ArticleLanding = __webpack_require__(342);
+var _ArticleLanding = __webpack_require__(344);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -60016,7 +60274,7 @@ var ArticleContainer = exports.ArticleContainer = function (_React$Component) {
 }(_react2.default.Component);
 
 /***/ }),
-/* 342 */
+/* 344 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -60139,7 +60397,7 @@ var Article = exports.Article = function (_React$Component) {
 }(_react2.default.Component);
 
 /***/ }),
-/* 343 */
+/* 345 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -60156,13 +60414,13 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _BlogPostHeaderLandingContainer = __webpack_require__(344);
+var _BlogPostHeaderLandingContainer = __webpack_require__(346);
 
-var _AboutAuthorLandingContainer = __webpack_require__(347);
+var _AboutAuthorLandingContainer = __webpack_require__(349);
 
-var _CommentsLandingContainer = __webpack_require__(349);
+var _CommentsLandingContainer = __webpack_require__(351);
 
-var _ReplyFormContent = __webpack_require__(351);
+var _ReplyFormContent = __webpack_require__(353);
 
 var _SearchFormLanding = __webpack_require__(18);
 
@@ -60313,7 +60571,7 @@ var BlogDetailsContent = exports.BlogDetailsContent = function (_React$Component
 }(_react2.default.Component);
 
 /***/ }),
-/* 344 */
+/* 346 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -60330,7 +60588,7 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _BlogPostHeaderLanding = __webpack_require__(345);
+var _BlogPostHeaderLanding = __webpack_require__(347);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -60361,7 +60619,7 @@ var BlogSpotHeaderContainer = exports.BlogSpotHeaderContainer = function (_React
 }(_react2.default.Component);
 
 /***/ }),
-/* 345 */
+/* 347 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -60378,7 +60636,7 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _BlogPostLanding = __webpack_require__(346);
+var _BlogPostLanding = __webpack_require__(348);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -60471,7 +60729,7 @@ var BlogSpotHeader = exports.BlogSpotHeader = function (_React$Component) {
 }(_react2.default.Component);
 
 /***/ }),
-/* 346 */
+/* 348 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -60579,7 +60837,7 @@ var BlogSpot = exports.BlogSpot = function (_React$Component) {
 }(_react2.default.Component);
 
 /***/ }),
-/* 347 */
+/* 349 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -60596,7 +60854,7 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _AboutAuthorLanding = __webpack_require__(348);
+var _AboutAuthorLanding = __webpack_require__(350);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -60627,7 +60885,7 @@ var AboutAuthorContainer = exports.AboutAuthorContainer = function (_React$Compo
 }(_react2.default.Component);
 
 /***/ }),
-/* 348 */
+/* 350 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -60703,7 +60961,7 @@ var AboutAuthor = exports.AboutAuthor = function (_React$Component) {
 }(_react2.default.Component);
 
 /***/ }),
-/* 349 */
+/* 351 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -60720,7 +60978,7 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _CommentsLanding = __webpack_require__(350);
+var _CommentsLanding = __webpack_require__(352);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -60763,7 +61021,7 @@ var CommentsContainer = exports.CommentsContainer = function (_React$Component) 
 }(_react2.default.Component);
 
 /***/ }),
-/* 350 */
+/* 352 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -60851,7 +61109,7 @@ var Comments = exports.Comments = function (_React$Component) {
 }(_react2.default.Component);
 
 /***/ }),
-/* 351 */
+/* 353 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -61011,7 +61269,7 @@ var ReplyForm = exports.ReplyForm = function (_React$Component) {
 }(_react2.default.Component);
 
 /***/ }),
-/* 352 */
+/* 354 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -61028,7 +61286,7 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _ListingLandingContainer = __webpack_require__(353);
+var _ListingLandingContainer = __webpack_require__(355);
 
 var _PageNav = __webpack_require__(29);
 
@@ -61109,7 +61367,7 @@ var MyListingContent = exports.MyListingContent = function (_React$Component) {
 }(_react2.default.Component);
 
 /***/ }),
-/* 353 */
+/* 355 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -61126,7 +61384,7 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _ListingLanding = __webpack_require__(354);
+var _ListingLanding = __webpack_require__(356);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -61226,7 +61484,7 @@ var ListingContainer = exports.ListingContainer = function (_React$Component) {
 }(_react2.default.Component);
 
 /***/ }),
-/* 354 */
+/* 356 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -61428,7 +61686,7 @@ var Listing = exports.Listing = function (_React$Component) {
 }(_react2.default.Component);
 
 /***/ }),
-/* 355 */
+/* 357 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -61445,11 +61703,11 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _StepsLandingContainer = __webpack_require__(356);
+var _StepsLandingContainer = __webpack_require__(358);
 
-var _IncludedLanding = __webpack_require__(358);
+var _IncludedLanding = __webpack_require__(360);
 
-var _ClientsLandingContainer = __webpack_require__(359);
+var _ClientsLandingContainer = __webpack_require__(361);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -61568,7 +61826,7 @@ var HowItWorksContent = exports.HowItWorksContent = function (_React$Component) 
 }(_react2.default.Component);
 
 /***/ }),
-/* 356 */
+/* 358 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -61585,7 +61843,7 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _StepsLanding = __webpack_require__(357);
+var _StepsLanding = __webpack_require__(359);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -61625,7 +61883,7 @@ var StepsContainer = exports.StepsContainer = function (_React$Component) {
 }(_react2.default.Component);
 
 /***/ }),
-/* 357 */
+/* 359 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -61713,7 +61971,7 @@ var Steps = exports.Steps = function (_React$Component) {
 }(_react2.default.Component);
 
 /***/ }),
-/* 358 */
+/* 360 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -61804,7 +62062,7 @@ var Included = exports.Included = function (_React$Component) {
 }(_react2.default.Component);
 
 /***/ }),
-/* 359 */
+/* 361 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -61821,7 +62079,7 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _ClientsLanding = __webpack_require__(360);
+var _ClientsLanding = __webpack_require__(362);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -61869,7 +62127,7 @@ var ClientsContainer = exports.ClientsContainer = function (_React$Component) {
 }(_react2.default.Component);
 
 /***/ }),
-/* 360 */
+/* 362 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";

@@ -9,19 +9,20 @@ export class Ceremony extends React.Component{
 				    <div className="panel panel-default">
 				      	<div className="panel-heading">
 					        <h4 className="panel-title">
-					          <a data-toggle="collapse" data-parent="#accordion" href={this.props.collapseId}>{this.props.title}</a>
+					          <a data-toggle="collapse" aria-expanded={this.props.collapsed} data-parent="#accordion" href={this.props.collapseId}>{this.props.title}</a>
 					        </h4>
-				     	</div>
-					    <div id={this.props.panelId} className="panel-collapse collapse in">
-					        <div className="panel-body">
-					        	<div className="row">
-					        		<ImageContainer />
-					        	</div>
-					        	<div className="cer-description">
-					        		<p>{this.props.desc} </p>
-					        		<p><a href="">{this.props.url}</a></p>
-					        	</div>
-					        </div>
+						    <div id={this.props.panelId} className="collapse">
+						        <div className="panel-body">
+						        	<div className="row">
+						        		<ImageContainer />
+						        	</div>
+						        	<div className="cer-description">
+						        		<h4>Description</h4>
+						        		<p>{this.props.desc} </p>
+						        		<p><a href="">{this.props.url}</a></p>
+						        	</div>
+						        </div>
+						    </div>
 					    </div>
 				    </div>
 				</div>

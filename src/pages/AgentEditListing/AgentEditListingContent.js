@@ -8,7 +8,7 @@ export class AgentEditListingContent extends React.Component {
 	constructor(props){
 		super(props);
 		this.state={
-			editorCeremonyState: EditorState.createEmpty(),
+			editorServicesState: EditorState.createEmpty(),
 			title:"",
 			catTitle:"",
 			category:"Category",
@@ -26,12 +26,13 @@ export class AgentEditListingContent extends React.Component {
 			youtube:"",
 			twitter:"",
 			pinterest:"",
-			ceremonyTitle:"",
-			ceremonyDesc:"",
-			ceremonyVideo:"",
+			servicesTitle:"",
+			servicesDesc:"",
+			servicesVideo:"",
+			servicesPrice:""
 		}
 	}
-	onEditorCeremonyStateChange(editorCeremonyState){
+	onEditorServicesStateChange(editorCeremonyState){
 	    this.setState({
 	      editorCeremonyState,
 	    });
@@ -121,36 +122,34 @@ export class AgentEditListingContent extends React.Component {
             youtube: event.target.value
         })
     }
-    handleChangeCeremonyTilte(event) {
+    handleChangeServicesTitle(event) {
         this.setState({
-            menuTitle: event.target.value
+            servicesTitle: event.target.value
         })
     }
-    handleChangeCeremonyDesc(event) {
+    handleChangeServicesDesc(event) {
         this.setState({
-            menuDesc: event.target.value
+            servicesDesc: event.target.value
         })
     }
-    handleCeremonyVideo(event) {
+    handleServicesVideo(event) {
         this.setState({
-            menuVideo: event.target.value
+            servicesVideo: event.target.value
         })
     }
-  
-    handleMenuSubmit(event) {
+  	handleChangeServicesPrice(event){
+  		this.setState({
+  			servicesPrice: event.target.value
+  		})
+  	}
+    handleServicesSubmit(event) {
         console.log(this.state);
         event.preventDefault();
       }
     handleSubmit(event) {
-    	this.state.editorState
-    	this.state.editorMusicState
-    	this.state.editorCeremonyState
-		const raw = JSON.stringify(convertToRaw(this.state.editorState.getCurrentContent()))
-		console.log(raw)
-		const rawMusic = JSON.stringify(convertToRaw(this.state.editorMusicState.getCurrentContent()))
-		console.log(rawMusic)
-		const rawCeremony = JSON.stringify(convertToRaw(this.state.editorCeremonyState.getCurrentContent()))
-		console.log(rawCeremony)
+    	this.state.editorServicesState
+		const rawService = JSON.stringify(convertToRaw(this.state.editorSErvicesState.getCurrentContent()))
+		console.log(rawService)
         console.log(this.state);
         event.preventDefault();
       }
@@ -221,7 +220,7 @@ export class AgentEditListingContent extends React.Component {
 			                                <div className="row">
 					                            <div className="col-md-3 col-sm-3">
 					                     			<div className="form-group">
-				                                        <label htmlFor="title">Cost Per Person</label>
+				                                        <label htmlFor="title">Minimun Cost </label>
 				                                        <input type="text" className="form-control" name="title" id="title" 
 				                                        value={this.state.cost} onChange={this.handleCost.bind(this)}/>
 				                                    </div>
@@ -360,20 +359,27 @@ export class AgentEditListingContent extends React.Component {
 			                                            <div className="panel-body">
 			                                                <div className="wrapper">
 			                                                    <div className="row">
-			                                                        <div className="col-md-12 col-sm-6">
+			                                                        <div className="col-md-8 col-sm-8">
 			                                                            <div className="form-group">
 			                                                            	<label htmlFor="video">Title</label>
 			                                                                <input type="text" className="form-control" name="menu_title[]" placeholder="Title" 
-			                                                                value={this.state.ceremonyTitle} onChange={this.handleChangeCeremonyTilte.bind(this)}/>
+			                                                                value={this.state.servicesTitle} onChange={this.handleChangeServicesTitle.bind(this)}/>
 			                                                            </div>
 			                                                        </div>
-			                                                        <div className="col-md-12 col-sm-6">
+			                                                        <div className="col-md-4 col-sm-4">
+			                                                            <div className="form-group">
+			                                                            	<label htmlFor="video">Services Price</label>
+			                                                                <input type="text" className="form-control" name="menu_title[]" 
+			                                                                value={this.state.servicesPrice} onChange={this.handleChangeServicesPrice.bind(this)}/>
+			                                                            </div>
+			                                                        </div>
+			                                                        <div className="col-md-12 col-sm-12">
 			                                                            <div className="form-group">
 			                                                           		<label htmlFor="video">Description</label>
 			                                                                <div>
 											                                    <Editor
-																			       	editorCeremonyState={this.state.editorCeremonyState}
-																			       	onEditorCeremonyStateChange={this.onEditorCeremonyStateChange.bind(this)}
+																			       	editorServicesState={this.state.editorServicesState}
+																			       	onEditorCeremonyStateChange={this.onEditorServicesStateChange.bind(this)}
 																					wrapperClassName="wrapper-class"
 																					editorClassName="editor-class"
 																					toolbarClassName="toolbar-class"	
@@ -385,7 +391,7 @@ export class AgentEditListingContent extends React.Component {
 				                                                    	<div className="form-group">
 										                                    <label htmlFor="video">Ceremony Video URL</label>
 										                                    <input type="text" className="form-control" name="video" id="video" placeholder="http://"
-										                                     value={this.state.ceremonyVideo} onChange={this.handleCeremonyVideo.bind(this)}/>
+										                                     value={this.state.servicesVideo} onChange={this.handleServicesVideo.bind(this)}/>
 									                                	</div>
 									                                </div>
 									                                <div className="col-md-12 col-sm-12">
@@ -407,7 +413,7 @@ export class AgentEditListingContent extends React.Component {
 																	</div>
 			                                                    </div>
 			                                                </div>
-			                                                <div className="center"><button onSubmit={this.handleMenuSubmit.bind(this)}className="btn btn-rounded btn-primary btn-framed btn-light-frame btn-xs icon duplicate"><i className="fa fa-plus"></i>Add another meal</button></div>
+			                                                <div className="center"><button onSubmit={this.handleServicesSubmit.bind(this)}className="btn btn-rounded btn-primary btn-framed btn-light-frame btn-xs icon duplicate"><i className="fa fa-plus"></i>Add another meal</button></div>
 			                                            </div>
 			                                        </div>
 			                                    </div>
