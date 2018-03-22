@@ -6,27 +6,22 @@ export class SearchContainer extends React.Component {
 
 		this.state = { 
 			location:"",
-            category:"",
+            category:[],
             date:""
         }
 	}
-	handleLocationChange(event) {
-		this.setState({
-			location: event.target.value
-		})
-	}
-    handleCategoryChange(event) {
+    handleValueChange(event){
         this.setState({
-            category: event.target.value
+            [event.target.name]: event.target.value
         })
     }
-    handleDateChange(event) {
+    handleCategory(event){
         this.setState({
-            date: event.target.value
+            category:[...event.target.selectedOptions].map(o => o.value)
         })
     }
     handleSubmit(event) {
-        console.log(this.state.category +" "+this.state.location);
+        console.log(this.state);
         event.preventDefault();
       }
 	render(){
@@ -38,15 +33,14 @@ export class SearchContainer extends React.Component {
                             <div className="col-md-4 col-sm-4">
                                 <div className="form-group">
                                     <input type="text" className="form-control" 
-                                           name="keyword" placeholder="Enter Location" id="address-autocomplete"
-                                           value={this.state.location}
-                                           onChange={this.handleLocationChange.bind(this)}/>
+                                           name="location" placeholder="Enter Location" id="address-autocomplete"
+                                           onChange={this.handleValueChange.bind(this)}/>
                                 </div>
                             </div>
                             <div className="col-md-4 col-sm-4">
                                 <div className="form-group">
-                                    <select className="form-control selectpicker" name="category"  value={this.state.category} onChange={this.handleCategoryChange.bind(this)}>
-                                        <option value="">Category</option>
+                                    <select className="form-control selectpicker" name="category" multiple={true} onChange={this.handleCategory.bind(this)}>
+                                        <option value="" disabled>Category</option>
                                         <option value="Restaurant">Restaurant</option>
                                         <option value="Event">Event</option>
                                         <option value="Adrenaline">Adrenaline</option>
@@ -57,8 +51,8 @@ export class SearchContainer extends React.Component {
                             </div>
                             <div className="col-md-3 col-sm-4">
                                 <div className="form-group">
-                                    <input type="text" className="form-control date-picker" name="min-price" placeholder="Event Date" 
-                                    value={this.state.date} onChange={this.handleDateChange}/>
+                                    <input type="text" className="form-control date-picker" name="date" placeholder="Event Date" 
+                                    onChange={this.handleValueChange.bind(this)}/>
                                 </div>
                             </div>
                             <div className="col-md-1 col-sm-4">

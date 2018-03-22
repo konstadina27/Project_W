@@ -4,24 +4,14 @@ export class ChangePassContent extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-            current_password:"",
-            new_password:"",
-            confirm_new_password:""
+            currentPassword:"",
+            newPassword:"",
+            confirmNewPassword:""
         }
     }
-    handleCurrPass(event) {
+    handleValueChange(event){
         this.setState({
-            current_password: event.target.value
-        })
-    }
-    handleNewPass(event) {
-        this.setState({
-            new_password: event.target.value
-        })
-    }
-    handleConNewPass(event) {
-        this.setState({
-            confirm_new_password: event.target.value
+            [event.target.name]: event.target.value
         })
     }
     handleSubmit(event) {
@@ -43,18 +33,18 @@ export class ChangePassContent extends React.Component {
                             <form className="form inputs-underline" onSubmit={this.handleSubmit.bind(this)}>
                                 <div className="form-group">
                                     <label htmlFor="current_password">Current Password</label>
-                                    <input type="password" className="form-control" name="current_password" id="current_password" 
-                                    value={this.state.current_password} onChange={this.handleCurrPass.bind(this)}/>
+                                    <input type="password" className="form-control" name="currentPassword" id="current_password" 
+                                    onChange={this.handleValueChange.bind(this)}/>
                                 </div>
                                 <div className="form-group">
                                     <label htmlFor="new_password">New Password</label>
-                                    <input type="password" className="form-control" name="new_password" id="new_password" placeholder="New Password"
-                                    value={this.state.new_password} onChange={this.handleNewPass.bind(this)}/>
+                                    <input type="password" className="form-control" name="newPassword" id="new_password" placeholder="New Password"
+                                    onChange={this.handleValueChange.bind(this)}/>
                                 </div>
                                 <div className="form-group">
                                     <label htmlFor="confirm_new_password">Confirm New Password</label>
-                                    <input type="password" className="form-control" name="confirm_new_password" id="confirm_new_password" placeholder="Confirm New Password" 
-                                    value={this.state.confirm_new_password} onChange={this.handleConNewPass.bind(this)}/>
+                                    <input type="password" className="form-control" name="confirmNewPassword" id="confirm_new_password" placeholder="Confirm New Password" 
+                                    onChange={this.handleValueChange.bind(this)}/>
                                 </div>
                                 <div className="form-group center">
                                     <button type="submit" className="btn btn-primary btn-framed btn-rounded btn-light-frame">Change Password</button>

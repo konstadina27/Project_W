@@ -36,7 +36,7 @@ export class BlogContent extends React.Component {
 	                    </aside>
 	                </div>
 			    </div>
-			    <PageNav />
+			    <PageNav /> 	
 	       	</div>
 	    </div>
 		)

@@ -10,27 +10,18 @@ export class FormContent extends React.Component {
             message:""
         }
     }
-    handleNameChange(event){
+    handleValueChange(event){
         this.setState({
-            name: event.target.value
-        })
-    }
-    handleEmailChange(event){
-        this.setState({
-            email: event.target.value
-        })
-    }
-    handleSubjectChange(event){
-        this.setState({
-            subject: event.target.value
-        })
-    }
-    handleMessageChange(event){
-        this.setState({
-            message: event.target.value
+            [event.target.name]: event.target.value
         })
     }
     handleSubmit(event) {
+        this.setState({
+            name:"",
+            email:"",
+            subject:"",
+            message:""
+        })
         console.log(this.state);
         event.preventDefault();
       }
@@ -44,28 +35,28 @@ export class FormContent extends React.Component {
                             <div className="form-group">
                                 <label htmlFor="name">Name</label>
                                 <input type="text" className="form-control" name="name" id="name" 
-                                value={this.state.name} onChange={this.handleNameChange.bind(this)}/>
+                                onChange={this.handleValueChange.bind(this)}/>
                             </div>
                         </div>
                         <div className="col-md-4 col-sm-4">
                             <div className="form-group">
                                 <label htmlFor="email">Email</label>
                                 <input type="email" className="form-control" name="email" id="email" 
-                                value={this.state.email} onChange={this.handleEmailChange.bind(this)}/>
+                                onChange={this.handleValueChange.bind(this)}/>
                             </div>
                         </div>
                         <div className="col-md-4 col-sm-4">
                             <div className="form-group">
                                 <label htmlFor="subject">Subject</label>
                                 <input type="text" className="form-control" name="subject" id="subject" 
-                                value={this.state.subject} onChange={this.handleSubjectChange.bind(this)}/>
+                                onChange={this.handleValueChange.bind(this)}/>
                             </div>
                         </div>
                     </div>
                     <div className="form-group">
                         <label htmlFor="message">Message</label>
                         <textarea className="form-control" id="message" rows="4" name="message"
-                        value={this.state.message} onChange={this.handleMessageChange.bind(this)}></textarea>
+                        onChange={this.handleValueChange.bind(this)}></textarea>
                     </div>
                     <div className="form-group">
                         <button type="submit" className="btn btn-primary icon shadow">Send Message<i className="fa fa-caret-right"></i></button>

@@ -6,6 +6,8 @@ import {ListingContainer} from './Listings/ListingLandingContainer';
 import {SearchFormContent} from '../../components/Search/SearchFormLanding';
 import {CarouselContainer} from './Carousel/CarouselContainer';
 import {RecentSectionContainer} from '../../components/RecentSection/RecentSectionLandingContainer';
+import {ReviewsForm} from './ReviewsContact/ReviewForm';
+import {ContactForm} from './ReviewsContact/ContactForm';
 
 export class AgentDetailsContent extends React.Component {
 	render(){
@@ -35,15 +37,9 @@ export class AgentDetailsContent extends React.Component {
 							    </div>
 							</div>
 						</div>
-						<AgentInfoContainer />
 					</div>
 					<div className="col-md-3 col-sm-3">
-	                    <aside className="sidebar">
-	                        <section>
-	                            <h2>Search Filter</h2>
-	                            <SearchFormContent />
-	                        </section>
-	                    </aside>
+			            <a href="#write-a-review" className="btn btn-primary btn-framed btn-rounded btn-light-frame icon scroll pull-right"><i className="fa fa-star"></i>Write a review</a>
 	                </div>
 				</div>
 			</div>
@@ -56,6 +52,19 @@ export class AgentDetailsContent extends React.Component {
 			   	</div>
 			 </div>
 			<div className="container">
+           		<div className="row">
+			       	<div className="col-md-9 col-sm-9">
+			       		<AgentInfoContainer />
+		            </div>
+					<div className="col-md-3 col-sm-3">
+	                    <aside className="sidebar">
+	                    	<section>
+	                            <h2>Search Filter</h2>
+	                            <SearchFormContent />
+	                        </section>
+	                    </aside>
+	                </div>
+			    </div>
            		<div className="row">
 			       	<div className="col-md-9 col-sm-9">
 				       	<section>
@@ -85,6 +94,10 @@ export class AgentDetailsContent extends React.Component {
 					<h3>All Listings</h3>
 					<ListingContainer />
 				</section>
+				<div className="row">
+					<ReviewsForm />
+					<ContactForm />
+				</div>
 			</div>
 	    </div>
 		)
@@ -92,5 +105,5 @@ export class AgentDetailsContent extends React.Component {
 }
 
 
-
+ 	
 	            

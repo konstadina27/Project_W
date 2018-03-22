@@ -12,29 +12,14 @@ export class SearchFormContent extends React.Component {
             valueMax:""
         }
     }
-    handleChangeKeyword(event){
+    handleValueChange(event){
         this.setState({
-            keyword:event.target.value
+            [event.target.name]: event.target.value
         })
     }
-    handleChangeLocation(event){
+    handleCategory(event){
         this.setState({
-            location:event.target.value
-        })
-    }
-    handleChangeCategory(event){
-        this.setState({
-            category:event.target.value
-        })
-    }
-    handleChangeDate(event){
-        this.setState({
-            date:event.target.value
-        })
-    }
-    handleChangeValue(event){
-        this.setState({
-            [event.target.name]: event.target.value 
+            category:[...event.target.selectedOptions].map(o => o.value)
         })
     }
     handleSubmit(event) {
@@ -47,11 +32,11 @@ export class SearchFormContent extends React.Component {
                 <form className="form inputs-underline" onSubmit={this.handleSubmit.bind(this)}>
                     <div className="form-group">
                         <input type="text" className="form-control" name="keyword" placeholder="Enter keyword" 
-                        value={this.state.keyword} onChange={this.handleChangeKeyword.bind(this)}/>
+                        onChange={this.handleValueChange.bind(this)}/>
                     </div>
                     <div className="form-group">
                         <select className="form-control selectpicker" name="location" 
-                        value={this.state.location} onChange={this.handleChangeLocation.bind(this)}>
+                        onChange={this.handleValueChange.bind(this)}>
                             <option value="">Location</option>
                             <option value="New York">New York</option>
                             <option value="Washington">Washington</option>
@@ -60,9 +45,9 @@ export class SearchFormContent extends React.Component {
                         </select>
                     </div>
                     <div className="form-group">
-                        <select className="form-control selectpicker" name="category"
-                        value={this.state.category} onChange={this.handleChangeCategory.bind(this)}>
-                            <option value="">Category</option>
+                        <select className="form-control selectpicker" name="category" multiple={true}
+                        onChange={this.handleCategory.bind(this)}>
+                            <option value="" disabled>Category</option>
                             <option value="Restaurant">Restaurant</option>
                             <option value="Event">Event</option>
                             <option value="Adrenaline">Adrenaline</option>
@@ -72,13 +57,13 @@ export class SearchFormContent extends React.Component {
                     </div>
                     <div className="form-group">
                         <input type="text" className="form-control date-picker" name="min-price" placeholder="Event Date" 
-                        value={this.state.date} onChange={this.handleChangeDate.bind(this)}/>
+                        onChange={this.handleValueChange.bind(this)}/>
                     </div>
                     <div className="form-group">
                         <div className="ui-slider" id="price-slider" data-value-min="20" data-value-max="400" data-value-type="price" data-currency="$" data-currency-placement="before">
                             <div className="values clearfix">
-                                <input className="value-min" name="valueMin" value={this.state.valueMin} onChange={this.handleChangeValue.bind(this)}/>
-                                <input className="value-max" name="valueMax" value={this.state.valueMax} onChange={this.handleChangeValue.bind(this)}/>
+                                <input className="value-min" name="valueMin" onChange={this.handleValueChange.bind(this)}/>
+                                <input className="value-max" name="valueMax" onChange={this.handleValueChange.bind(this)}/>
                             </div>
                             <div className="element"></div>
                         </div>

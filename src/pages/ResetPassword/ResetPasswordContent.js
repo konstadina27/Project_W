@@ -7,9 +7,9 @@ export class ResetPasswordContent extends React.Component {
 			email:""
 		}	
 	}
-	handleChangeEmail(event) {
+	handleValueChange(event) {
 		this.setState({
-			email: event.target.value
+			[event.target.name]: event.target.value
 		})
 	}
 	handleSubmit(event) {
@@ -35,7 +35,7 @@ export class ResetPasswordContent extends React.Component {
 					                <div className="form-group">
 			                            <label htmlFor="email">Email</label>
 			                            <input type="email" className="form-control" name="email" id="email" placeholder="Your email" 
-			                            value={this.state.email} onChange={this.handleChangeEmail.bind(this)}/>
+			                            onChange={this.handleValueChange.bind(this)}/>
 			                        </div> 
 			                        <div className="form-group center">
 			                            <button type="submit" className="btn btn-primary width-100">Send me new password</button>

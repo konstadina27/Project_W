@@ -3,39 +3,32 @@ import { EditorState, convertToRaw} from 'draft-js';
 import { Editor } from 'react-draft-wysiwyg';
 import '../../../node_modules/react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 
-export class ServicesPackage extends React.Component {
+export class CeremonyPackage extends React.Component {
 	constructor(props){
 		super(props);
-		
 	}
+
 	render(){
 		return(
 			<section>
-			    <h3>Services Package<span className="note">(optional)</span></h3>
-			    <div className="panel-group" id="accordion-1" role="tablist" aria-multiselectable="true">
+			    <h3>Ceremony Package<span className="note">(optional)</span></h3>
+			    <div className="panel-group" id="accordion-4" role="tablist" aria-multiselectable="true">
 			        <div className="panel panel-default">
-				        <div className="panel-heading" role="tab" id="accordion-heading-1">
-			                <h1 className="panel-title">
-				                <a role="button" data-toggle="collapse" href={`#accordion-collapse${this.props.id}`} data-parent="#accordion" aria-expanded="false" aria-controls={`accordion-collapse${this.props.id}`}>
-				                    <i className="fa fa-cutlery"></i>Add Services package
+				        <div className="panel-heading" role="tab" id="accordion-heading-4">
+			                <h4 className="panel-title">
+				                <a role="button" data-toggle="collapse" href={`#accordion-collapse${this.props.cerId}`} data-parent="#accordion-4" aria-expanded="false" aria-controls={`accordion-collapse${this.props.cerId}`}>
+				                    <i className="fa fa-cutlery"></i>Add Ceremony package
 				                </a>
-			                </h1>
+			                </h4>
 			            </div>
-			            <div id={`accordion-collapse${this.props.id}`} className="panel-collapse collapse" role="tabpanel" aria-labelledby="accordion-heading-1">
+			            <div id={`accordion-collapse${this.props.cerId}`} className="panel-collapse collapse" role="tabpanel" aria-labelledby="accordion-heading-4">
 			                <div className="panel-body">
 			                    <div className="wrapper">
 			                        <div className="row">
 			                            <div className="col-md-8 col-sm-8">
 			                                <div className="form-group">
 			                                   	<label htmlFor="video">Title</label>
-			                                    <input type="text" className="form-control" name="servicesTitle" placeholder="Title" 
-			                                    onChange={this.props.handleValueChange}/>
-			                                </div>
-			                            </div>
-			                            <div className="col-md-4 col-sm-4">
-			                                <div className="form-group">
-			                                    <label htmlFor="video">Services Price</label>
-			                                    <input type="text" className="form-control" name="servicesPrice" 
+			                                    <input type="text" className="form-control" name="ceremonyTitle" placeholder="Title" 
 			                                    onChange={this.props.handleValueChange}/>
 			                                </div>
 			                            </div>
@@ -55,8 +48,8 @@ export class ServicesPackage extends React.Component {
 			                            </div>
 			                            <div className="col-md-12 col-sm-12">
 				                            <div className="form-group">
-											    <label htmlFor="video">Services Video URL</label>
-											    <input type="text" className="form-control" name="servicesVideo" id="video" placeholder="http://"
+											    <label htmlFor="video">Ceremony Video URL</label>
+											    <input type="text" className="form-control" name="ceremonyVideo" id="video" placeholder="http://"
 											    	 onChange={this.props.handleValueChange}/>
 							        		</div>
 									    </div>
@@ -73,16 +66,14 @@ export class ServicesPackage extends React.Component {
 											</div>
 											<div className="file-upload-previews2"></div>
 											<div className="file-upload2">
-												<input type="file" name="serviceFiles" multiple className="file-upload-input2 with-preview" onChange={this.props.handleValueChange}/>
+												<input type="file" name="ceremonyFiles" multiple className="file-upload-input2 with-preview" onChange={this.props.handleValueChange}/>
 												<span>Click or drag images here</span>
 											</div>
 										</div>
 			                        </div>
 			                    </div>
-			                   
 			                </div>
 		                </div>
-
 	                </div>
 	            </div>
 	        </section>

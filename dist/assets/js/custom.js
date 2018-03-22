@@ -179,18 +179,18 @@ $(document).ready(function($) {
 
 //  Duplicate desired element ------------------------------------------------------------------------------------------
 
-    $(".duplicate").live("click", function(e){
-        e.preventDefault();
-        var duplicateElement = $(this).attr("href");
-        var parentElement = $(duplicateElement)[0].parentElement;
-        $(parentElement).append( $(duplicateElement)[0].outerHTML );
-    });
+
 
 //  Enable image previews in multi file input --------------------------------------------------------------------------
 
     if( $("input[type=file].with-preview").length ){
         $("input.file-upload-input").MultiFile({
             list: ".file-upload-previews"
+        });
+    }
+        if( $("input[type=file].with-preview").length ){
+        $("input.file-upload-input2").MultiFile({
+            list: ".file-upload-previews2"
         });
     }
 
@@ -369,6 +369,13 @@ function openModal(target, modalPath){
                     $.getScript( "assets/js/jQuery.MultiFile.min.js", function( data, textStatus, jqxhr ) {
                         $("input.file-upload-input").MultiFile({
                             list: ".file-upload-previews"
+                        });
+                    });
+                }
+                if( $("input[type=file]").length ){
+                    $.getScript( "assets/js/jQuery.MultiFile.min.js", function( data, textStatus, jqxhr ) {
+                        $("input.file-upload-input2").MultiFile({
+                            list: ".file-upload-previews2"
                         });
                     });
                 }

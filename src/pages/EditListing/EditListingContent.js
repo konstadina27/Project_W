@@ -1,4 +1,7 @@
 import React from 'react';
+import {CeremonyPackage} from './CeremonyPackage';
+import {MenuContent} from './MenuContent';
+import {ScheduleContent} from './ScheduleContent';
 import { EditorState, convertToRaw} from 'draft-js';
 import { Editor } from 'react-draft-wysiwyg';
 import '../../../node_modules/react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
@@ -8,12 +11,10 @@ export class EditListingContent extends React.Component {
 	constructor(props){
 		super(props);
 		this.state={
-			editorState: EditorState.createEmpty(),
-			editorMusicState: EditorState.createEmpty(),
-			editorCeremonyState: EditorState.createEmpty(),
+/*			editorState: EditorState.createEmpty(),*/
 			title:"",
-			catTitle:"",
-			category:"Category",
+			catTitle:[{id:1 , value:""}],
+			category:[],
 			description:"",
 			tags:"",
 			cost:"",
@@ -21,6 +22,7 @@ export class EditListingContent extends React.Component {
 			startDate:"",
 			lastDate:"",
 			equip:"",
+			files:[],
 			extraCost:"",
 			address:"",
 			region:"",
@@ -32,17 +34,6 @@ export class EditListingContent extends React.Component {
 			youtube:"",
 			twitter:"",
 			pinterest:"",
-			menuTitle:"",
-			menuDesc:"",
-			menuType:"",
-			menuVideo:"",
-			ceremonyTitle:"",
-			ceremonyDesc:"",
-			ceremonyVideo:"",
-			scheduleDate:"",
-			time:"",
-			place:"",
-			scheduleAddress:"",
 			monOpen:"",
 			monClose:"",
 			tueOpen:"",
@@ -57,207 +48,156 @@ export class EditListingContent extends React.Component {
 			satClose:"",
 			sunOpen:"",
 			sunClose:"",
+			schedule: [
+			{schedId:1, scheduleDate:"",time:"",place:"",scheduleAddress:""}
+			],
+			ceremony: [
+			{cerId:2, editorState: EditorState.createEmpty(), ceremonyTitle:"", ceremonyVideo:"", ceremonyFiles:[]}
+			],
+			menu: [
+			{menuId:3, menuTitle:"",menuDesc:"", menuVideo:"", menuType:[]}
+			]			
 
 		}
 	}
-	onEditorStateChange(editorState){
+/*	onEditorStateChange(editorState){
 	    this.setState({
 	      editorState,
-	    });
-  	};
-	onEditorMusicStateChange(editorMusicState){
+	    })
+  	}*/
+
+/*	onEditorMusicStateChange(editorMusicState){
 	    this.setState({
 	      editorMusicState,
-	    });
-  	};
-	onEditorCeremonyStateChange(editorCeremonyState){
-	    this.setState({
-	      editorCeremonyState,
-	    });
-  	};
-	handleOpenHours(event){
+	    })
+  	}*/
+	handleValueChange(event){
 		this.setState({
-			[event.target.name]: event.target.value 
-		})
-	}
-	handleTitle(event){
-		this.setState({
-			title: event.target.value
-		})
-	}
-	handlecatTitle(event){
-		this.setState({
-			catTitle: event.target.value
+			[event.target.name]: event.target.value
 		})
 	}
 	handleCategory(event){
 		this.setState({
-			category: event.target.value
+			category:[...event.target.selectedOptions].map(o => o.value)
 		})
 	}
-	handleDesc(event){
+	handleMenuType(event){
 		this.setState({
-			description: event.target.value
+			menuType:[...event.target.selectedOptions].map(o => o.value)
 		})
 	}
-	handleTags(event){
+	handleUpdateCat(newCat,i){
+		let catTitle = this.state.catTitle
+
+		catTitle.push({
+			id: (catTitle.length + 1),
+			value:this.state.value
+		})
+		this.setState ({
+			catTitle:catTitle
+		})
+		newCat.preventDefault();
+	}
+	handleOpenHours(event){
 		this.setState({
-			tags: event.target.value
+			[event.target.name]: event.target.value
 		})
 	}
-	handleCost(event){
+	onEditorStateChange(editorState){
+	    this.setState({
+	      editorState,
+	    })
+  	}
+    handleCeremonySubmit(event) {
+		let ceremony = this.state.ceremony
+		ceremony.push({
+			cerId: (ceremony.length + 1),
+			ceremonyTitle: this.state.ceremonyTitle,
+			ceremonyVideo: this.state.ceremonyVideo,
+			ceremonyFiles:this.state.ceremonyFiles,
+			editorState:JSON.stringify(convertToRaw(this.state.editorState.getCurrentContent()))
+		})
 		this.setState({
-			cost: event.target.value
+			ceremony: ceremony
 		})
-	}
-	handleHosting(event){
-		this.setState({
-			hosting: event.target.value
-		})
-	}
-	handleEquip(event){
-		this.setState({
-			equip: event.target.value
-		})
-	}
-	handleExtraCost(event){
-		this.setState({
-			extraCost: event.target.value
-		})
-	}
-	handleStartDate(event){
-		this.setState({
-			startDate: event.target.value
-		})
-	}
-	handleLastDate(event){
-		this.setState({
-			lastDate: event.target.value
-		})
-	}
-	handleAddress(event){
-		this.setState({
-			address: event.target.value
-		})
-	}
-	handleRegion(event){
-		this.setState({
-			region: event.target.value
-		})
-	}
-	handlePhone(event){
-		this.setState({
-			phone: event.target.value
-		})
-	}
-	handleEmail(event){
-		this.setState({
-			email: event.target.value
-		})
-	}
-	handleWebsite(event){
-		this.setState({
-			website: event.target.value
-		})
-	}
-	handleVideo(event){
-		this.setState({
-			video: event.target.value
-		})
-	}
-	handleChangeFacebook(event) {
-        this.setState({
-            facebook: event.target.value
-        })
-    }
-    handleChangeTwitter(event) {
-        this.setState({
-            twitter: event.target.value
-        })
-    }
-    handleChangePinterest(event) {
-        this.setState({
-            pinterest: event.target.value
-        })
-    }
-    handleChangeYoutube(event) {
-        this.setState({
-            youtube: event.target.value
-        })
-    }
-    handleChangeMenuTilte(event) {
-        this.setState({
-            menuTitle: event.target.value
-        })
-    }
-    handleChangeMenuDesc(event) {
-        this.setState({
-            menuDesc: event.target.value
-        })
-    }
-    handleChangeMenuType(event) {
-        this.setState({
-            menuType: event.target.value
-        })
-    }
-    handleMenuVideo(event) {
-        this.setState({
-            menuVideo: event.target.value
-        })
-    }
-    handleChangeCeremonyTilte(event) {
-        this.setState({
-            menuTitle: event.target.value
-        })
-    }
-    handleChangeCeremonyDesc(event) {
-        this.setState({
-            menuDesc: event.target.value
-        })
-    }
-    handleCeremonyVideo(event) {
-        this.setState({
-            menuVideo: event.target.value
-        })
-    }
-    handleChangeScheduleDate(event) {
-        this.setState({
-            scheduleDate: event.target.value
-        })
-    }
-    handleChangeTime(event) {
-        this.setState({
-            time: event.target.value
-        })
-    }
-    handleChangePlace(event) {
-        this.setState({
-            place: event.target.value
-        })
-    }
-    handleChangeScheduleAddress(event) {
-        this.setState({
-            schedule_address: event.target.value
-        })
-    }
+		event.preventDefault();
+      }
     handleMenuSubmit(event) {
-        console.log(this.state);
-        event.preventDefault();
+		let menu = this.state.menu
+		menu.push({
+			menuId: (menu.length + 100),
+			menuTitle: this.state.menuTitle,
+			menuDesc: this.state.menuDesc,
+			menuVideo:this.state.menuVideo,
+			menuType:this.state.menuType
+		})
+		this.setState({
+			menu: menu
+		})
+		event.preventDefault();
+      }
+    handleScheduleSubmit(event) {
+		let schedule = this.state.schedule
+		schedule.push({
+			schedId: (schedule.length + 200),
+			scheduleDate: this.state.scheduleDate,
+			time: this.state.time,
+			place:this.state.place,
+			scheduleAddress:this.state.scheduleAddress
+		})
+		this.setState({
+			schedule: schedule
+		})
+		event.preventDefault();
       }
     handleSubmit(event) {
-    	this.state.editorState
+/*    	this.state.editorState
     	this.state.editorMusicState
-    	this.state.editorCeremonyState
 		const raw = JSON.stringify(convertToRaw(this.state.editorState.getCurrentContent()))
 		console.log(raw)
 		const rawMusic = JSON.stringify(convertToRaw(this.state.editorMusicState.getCurrentContent()))
-		console.log(rawMusic)
-		const rawCeremony = JSON.stringify(convertToRaw(this.state.editorCeremonyState.getCurrentContent()))
-		console.log(rawCeremony)
+		console.log(rawMusic)*/
+/*      var content = this.state.editorServicesState*/
+/*		const rawService = JSON.stringify(convertToRaw(content.getCurrentContent()))
+		console.log(content)
+		console.log(content.getCurrentContent())
+		console.log(convertToRaw(content.getCurrentContent()))
+		convertToRaw(rawService)*/
         console.log(this.state);
         event.preventDefault();
       }
+	componentDidMount(){
+		this.setState({
+			catTitle:this.state.catTitle
+		})
+		}
 	render(){
+		const catTitles = this.state.catTitle.map((cat,i) => {
+			if ( this.state.catTitle !== null) {
+			return <option key={cat.id} value={cat.value}>{this.state.value}</option>
+			}
+		})
+		const menus = this.state.menu.map((m,i) => {
+			if( this.state.menu !== null){
+			return <MenuContent key={i} handleMenuSubmit={this.handleMenuSubmit.bind(this)} handleMenuType={this.handleMenuType.bind(this)}
+			 	handleValueChange={this.handleValueChange.bind(this)} menuId={m.menuId}/>
+			}
+		});
+		const ceremonies = this.state.ceremony.map((cer,i) => {
+			if(this.state.ceremony !== null){
+				return <CeremonyPackage key={i} handleCeremonySubmit={this.handleCeremonySubmit.bind(this)} editorState={this.state.editorState}
+			 		handleValueChange={this.handleValueChange.bind(this)} onEditorStateChange={this.onEditorStateChange.bind(this)} cerId={cer.cerId}/>		
+
+			}
+		});
+		const schedules = this.state.schedule.map((sched,i) => {
+			if(this.state.schedule !== null){
+				return <ScheduleContent key={i} handleScheduleSubmit={this.handleScheduleSubmit.bind(this)} 
+			 		handleValueChange={this.handleValueChange.bind(this)} schedId={sched.schedId}/>		
+
+			}
+		});
+
 		return(
 			    <div id="page-content">
 			        <div className="container">
@@ -280,65 +220,68 @@ export class EditListingContent extends React.Component {
 			                                        <div className="form-group">
 			                                            <label htmlFor="title">Listing Title</label>
 			                                            <input type="text" className="form-control" name="title" id="title" 
-			                                            value={this.state.title} onChange={this.handleTitle.bind(this)}/>
+			                                            onChange={this.handleValueChange.bind(this)}/>
 			                                        </div>
 			                                    </div>
 			                               		<div className="col-md-9 col-sm-9">
 			                                        <div className="form-group">
 			                                            <label htmlFor="title">New Category</label>
-			                                            <input type="text" className="form-control" name="title" id="title" 
-			                                            value={this.state.catTitle} onChange={this.handlecatTitle.bind(this)}/>
+			                                            <input type="text" className="form-control" name="value" id="title" onChange={this.handleValueChange.bind(this)}/>
+			                                        <button onClick={this.handleUpdateCat.bind(this)}>Add Category</button>
 			                                        </div>
+			                                        
 			                                    </div>
 			                                    <div className="col-md-3 col-sm-3">
 			                                        <div className="form-group">
+			                                        	
 			                                            <label htmlFor="category">Category</label>
-			                                            <select className="form-control selectpicker" name="category" id="category" 
-			                                            value={this.state.category} onChange={this.handleCategory.bind(this)}>
-					                    					<option value="">Category</option>
+			                                            <select className="form-control selectpicker" name="category" id="category" multiple={true}
+			                                             onChange={this.handleCategory.bind(this)}>
+					                    					<option value="" disabled>Category</option>
 					                        				<option value="Restaurant">Restaurant</option>
 					                        				<option value="Event">Event</option>
 					                       					<option value="Adrenaline">Adrenaline</option>
 					                        				<option value="Sport">Sport</option>
 					                        				<option value="Wellness">Wellness</option>
+					                        				{catTitles}
 			                                            </select>
+													
 			                                        </div>
 			                                    </div>
-			                              
-			                                <div className="col-md-12 col-sm-9">
-				                                <div className="form-group">
-				                                    <label htmlFor="description">Description</label>
-				                                    <div>
-				                                     <Editor
-												       	editorState={this.state.editorState}
-												       	onEditorStateChange={this.onEditorStateChange.bind(this)}
-														wrapperClassName="wrapper-class"
-														editorClassName="editor-class"
-														toolbarClassName="toolbar-class"	
-													/>
-													</div>
-				                                </div>
-				                            </div> 
-				                       	</div>
+												<div className="col-md-12 col-sm-9">
+					                                <div className="form-group">
+					                                    <label htmlFor="description">Description</label>
+		{/*			                                    <div>
+					                                     <Editor
+													       	editorState={this.state.editorState}
+													       	onEditorStateChange={this.onEditorStateChange.bind(this)}
+															wrapperClassName="wrapper-class"
+															editorClassName="editor-class"
+															toolbarClassName="toolbar-class"	
+														/>
+														</div>*/}
+					                                </div>
+				                            	</div>
+				                       		</div>
 			                                <div className="row">
 				                                <div className="col-md-9 col-sm-9">
 					                                <div className="form-group">
 					                                    <label htmlFor="tags">Tags</label>
-					                                    <input type="text" className="form-control" name="tags" id="tags" value={this.state.tags} onChange={this.handleTags.bind(this)}  />
+					                                    <input type="text" className="form-control" name="tags" id="tags" onChange={this.handleValueChange.bind(this)}  />
 					                                </div>
 					                            </div>
 					                            <div className="col-md-3 col-sm-3">
 					                     			<div className="form-group">
 				                                        <label htmlFor="title">Cost Per Person</label>
-				                                        <input type="text" className="form-control" name="title" id="title" 
-				                                        value={this.state.cost} onChange={this.handleCost.bind(this)}/>
+				                                        <input type="text" className="form-control" name="cost" id="title" 
+				                                        onChange={this.handleValueChange.bind(this)}/>
 				                                    </div>
 					                            </div>
 					                            <div className="col-md-4 col-sm-4">
 				                                   <div className="form-group">
 				                                        <label htmlFor="category">Hosting</label>
-				                                        <select className="form-control selectpicker" name="category" id="category" 
-				                                        value={this.state.hosting} onChange={this.handleHosting.bind(this)}>
+				                                        <select className="form-control selectpicker" name="hosting" id="category" 
+				                                        onChange={this.handleValueChange.bind(this)}>
 				                                        	<option value="">Hosting</option>
 						                    				<option value="reception">Reception</option>
 						                        			<option value="ceremony">Ceremony</option>
@@ -352,25 +295,26 @@ export class EditListingContent extends React.Component {
 					                               			<label htmlFor="tags">Availability</label>
 					                               		</div>
 					                                    <div className="col-md-6 col-sm-4">
-                               								<input type="text" className="form-control date-picker" name="min-price" placeholder="From" 
-                               								value={this.state.startDate} onChange={this.handleStartDate.bind(this)} />
+                               								<input type="text" className="form-control date-picker" name="startDate" placeholder="From" 
+                               								onChange={this.handleValueChange.bind(this)} />
                                 						</div>
                                 						<div className="col-md-6 col-sm-4">
-                               								<input type="text" className="form-control date-picker" name="min-price" placeholder="Until" 
-                               								value={this.state.lastDate} onChange={this.handleLastDate.bind(this)} />
+                               								<input type="text" className="form-control date-picker" name="lastDate" placeholder="Until" 
+                               								onChange={this.handleValueChange.bind(this)} />
                                 						</div>
 					                                </div>
 				                                </div>
 				                            	<div className="col-md-3 col-sm-3">
 					                                <div className="form-group">
 					                                    <label htmlFor="tags">Extra Cost/Equipment</label>
-					                                    <input type="text" className="form-control" name="tags" id="tags" value={this.state.extraCost} onChange={this.handleExtraCost.bind(this)}  />
+					                                    <input type="text" className="form-control" name="extraCost" id="tags" onChange={this.handleValueChange.bind(this)}  />
 					                                </div>
 				                                </div>
 				                                <div className="col-md-12 col-sm-9">
 					                                <div className="form-group">
 					                                    <label htmlFor="tags">Music Equipment</label>
-					                                    <div>
+}
+{/*					                                    <div>
 						                                    <Editor
 														       	editorMusicState={this.state.editorMusicState}
 														       	onEditorMusicStateChange={this.onEditorMusicStateChange.bind(this)}
@@ -378,7 +322,7 @@ export class EditListingContent extends React.Component {
 																editorClassName="editor-class"
 																toolbarClassName="toolbar-class"	
 															/>
-														</div>
+														</div>*/}
 					                                </div>
 				                                </div>
 				                            </div>
@@ -390,7 +334,7 @@ export class EditListingContent extends React.Component {
 			                                        <div className="form-group">
 			                                            <label htmlFor="address-autocomplete">Address</label>
 			                                            <input type="text" className="form-control" name="address" id="address-autocomplete"
-			                                             value={this.state.address} onChange={this.handleAddress.bind(this)}/>
+			                                            onChange={this.handleValueChange.bind(this)}/>
 			                                        </div>
 			                                            <div className="map height-200px shadow" id="map-submit"></div>
 			                                        <div className="form-group hidden">
@@ -403,7 +347,7 @@ export class EditListingContent extends React.Component {
 			                                        <div className="form-group">
 			                                            <label htmlFor="region">Listing Region</label>
 			                                            <select className="form-control selectpicker" name="region" id="region" 
-			                                            value={this.state.region} onChange={this.handleRegion.bind(this)}>
+			                                            onChange={this.handleValueChange.bind(this)}>
 		                    									<option value="">Region</option>
 		                        								<option value="London">London</option>
 		                        								<option value="New York">New York</option>
@@ -414,17 +358,17 @@ export class EditListingContent extends React.Component {
 			                                        <div className="form-group">
 			                                            <label htmlFor="phone">Listing Phone</label>
 			                                            <input type="text" className="form-control" name="phone" id="phone"  
-			                                            value={this.state.phone} onChange={this.handlePhone.bind(this)}/>
+			                                            onChange={this.handleValueChange.bind(this)}/>
 			                                        </div>
 			                                        <div className="form-group">
 			                                            <label htmlFor="email">Listing Email</label>
 			                                            <input type="email" className="form-control" name="email" id="email" 
-			                                            value={this.state.email} onChange={this.handleEmail.bind(this)}/>
+			                                            onChange={this.handleValueChange.bind(this)}/>
 			                                        </div>
 			                                        <div className="form-group">
 			                                            <label htmlFor="website">Listing Website</label>
 			                                            <input type="text" className="form-control" name="website" id="website" 
-			                                            value={this.state.website} onChange={this.handleWebsite.bind(this)} />
+			                                            onChange={this.handleValueChange.bind(this)} />
 			                                        </div>
 			                                    </div>
 			                                </div>
@@ -447,13 +391,13 @@ export class EditListingContent extends React.Component {
 			                                </div>
 			                                <div className="file-upload-previews"></div>
 			                                <div className="file-upload">
-			                                    <input type="file" name="files[]" className="file-upload-input with-preview" multiple title="Click to add files" maxLength="10" accept="gif|jpg|png"/>
+			                                    <input type="file" name="files" className="file-upload-input with-preview" multiple title="Click to add files" onChange={this.handleValueChange.bind(this)}/>
 			                                    <span>Click or drag images here</span>
 			                                </div>
 			                                <div className="form-group">
 			                                    <label htmlFor="video">Video URL</label>
 			                                    <input type="text" className="form-control" name="video" id="video" placeholder="http://"
-			                                     value={this.state.video} onChange={this.handleVideo.bind(this)}/>
+			                                    onChange={this.handleValueChange.bind(this)}/>
 			                                </div>
 			                            </section>
 			                            <section>
@@ -463,24 +407,24 @@ export class EditListingContent extends React.Component {
 			                                        <div className="form-group">
 			                                            <label htmlFor="facebook">Facebook URL</label>
 			                                            <input type="text" className="form-control" name="facebook" id="facebook" 
-			                                             value={this.state.facebook} onChange={this.handleChangeFacebook.bind(this)} />
+			                                            onChange={this.handleValueChange.bind(this)} />
 			                                        </div>
 			                                        <div className="form-group">
 			                                            <label htmlFor="youtube">Youtube URL</label>
 			                                            <input type="text" className="form-control" name="youtube" id="youtube" 
-			                                            value={this.state.youtube} onChange={this.handleChangeYoutube.bind(this)}/>
+			                                            onChange={this.handleValueChange.bind(this)}/>
 			                                        </div>
 			                                    </div>
 			                                    <div className="col-md-6 col-sm-6">
 			                                        <div className="form-group">
 			                                            <label htmlFor="twitter">Twitter URL</label>
 			                                            <input type="text" className="form-control" name="twitter" id="twitter" 
-			                                            value={this.state.twitter} onChange={this.handleChangeTwitter.bind(this)}/>
+			                                            onChange={this.handleValueChange.bind(this)}/>
 			                                        </div>
 			                                        <div className="form-group">
 			                                            <label htmlFor="pinterest">Pinterest URL</label>
 			                                            <input type="text" className="form-control" name="pinterest" id="pinterest" placeholder="http://"
-			                                            value={this.state.pinterest} onChange={this.handleChangePinterest.bind(this)}/>
+			                                            onChange={this.handleValueChange.bind(this)}/>
 			                                        </div>
 			                                    </div>
 			                                </div>
@@ -505,13 +449,13 @@ export class EditListingContent extends React.Component {
 			                                                    <div className="col-md-4 col-sm-4">
 			                                                        <div className="form-group">
 			                                                            <input type="text" className="form-control" name="monOpen" 
-			                                                            value={this.state.monOpen} onChange={this.handleOpenHours.bind(this)}/>
+			                                                            onChange={this.handleOpenHours.bind(this)}/>
 			                                                        </div>
 			                                                    </div>
 			                                                    <div className="col-md-4 col-sm-4">
 			                                                        <div className="form-group">
 			                                                            <input type="text" className="form-control" name="monClose"  
-			                                                            value={this.state.monClose} onChange={this.handleOpenHours.bind(this)}/>
+			                                                            onChange={this.handleOpenHours.bind(this)}/>
 			                                                        </div>
 			                                                    </div>
 			                                                </div>
@@ -522,13 +466,13 @@ export class EditListingContent extends React.Component {
 			                                                    <div className="col-md-4 col-sm-4">
 			                                                        <div className="form-group">
 			                                                            <input type="text" className="form-control" name="tueOpen" 
-			                                                            value={this.state.tueOpen} onChange={this.handleOpenHours.bind(this)}/>
+			                                                            onChange={this.handleOpenHours.bind(this)}/>
 			                                                        </div>
 			                                                    </div>
 			                                                    <div className="col-md-4 col-sm-4">
 			                                                        <div className="form-group">
 			                                                            <input type="text" className="form-control" name="tueClose"
-			                                                            value={this.state.tueClose} onChange={this.handleOpenHours.bind(this)} />
+			                                                            onChange={this.handleOpenHours.bind(this)} />
 			                                                        </div>
 			                                                    </div>
 			                                                </div>
@@ -539,13 +483,13 @@ export class EditListingContent extends React.Component {
 			                                                    <div className="col-md-4 col-sm-4">
 			                                                        <div className="form-group">
 			                                                            <input type="text" className="form-control" name="wedOpen" 
-			                                                            value={this.state.wedOpen} onChange={this.handleOpenHours.bind(this)} />
+			                                                            onChange={this.handleOpenHours.bind(this)} />
 			                                                        </div>
 			                                                    </div>
 			                                                    <div className="col-md-4 col-sm-4">
 			                                                        <div className="form-group">
 			                                                            <input type="text" className="form-control" name="wedClose"
-			                                                            value={this.state.wedClose} onChange={this.handleOpenHours.bind(this)}/>
+			                                                            onChange={this.handleOpenHours.bind(this)}/>
 			                                                        </div>
 			                                                    </div>
 			                                                </div>
@@ -556,13 +500,13 @@ export class EditListingContent extends React.Component {
 			                                                    <div className="col-md-4 col-sm-4">
 			                                                        <div className="form-group">
 			                                                            <input type="text" className="form-control" name="thuOpen" 
-			                                                            value={this.state.thuOpen} onChange={this.handleOpenHours.bind(this)}/>
+			                                                            onChange={this.handleOpenHours.bind(this)}/>
 			                                                        </div>
 			                                                    </div>
 			                                                    <div className="col-md-4 col-sm-4">
 			                                                        <div className="form-group">
 			                                                            <input type="text" className="form-control" name="thuClose" 
-			                                                            value={this.state.thuClose} onChange={this.handleOpenHours.bind(this)}/>
+			                                                            onChange={this.handleOpenHours.bind(this)}/>
 			                                                        </div>
 			                                                    </div>
 			                                                </div>
@@ -573,13 +517,13 @@ export class EditListingContent extends React.Component {
 			                                                    <div className="col-md-4 col-sm-4">
 			                                                        <div className="form-group">
 			                                                            <input type="text" className="form-control" name="friOpen" 
-			                                                            value={this.state.friOpen} onChange={this.handleOpenHours.bind(this)}/>
+			                                                            onChange={this.handleOpenHours.bind(this)}/>
 			                                                        </div>
 			                                                    </div>
 			                                                    <div className="col-md-4 col-sm-4">
 			                                                        <div className="form-group">
 			                                                            <input type="text" className="form-control" name="friClose"
-			                                                            value={this.state.friClose} onChange={this.handleOpenHours.bind(this)}/>
+			                                                            onChange={this.handleOpenHours.bind(this)}/>
 			                                                        </div>
 			                                                    </div>
 			                                                </div>
@@ -590,13 +534,13 @@ export class EditListingContent extends React.Component {
 			                                                    <div className="col-md-4 col-sm-4">
 			                                                        <div className="form-group">
 			                                                            <input type="text" className="form-control" name="satOpen" 
-			                                                            value={this.state.satOpen} onChange={this.handleOpenHours.bind(this)}/>
+			                                                            onChange={this.handleOpenHours.bind(this)}/>
 			                                                        </div>
 			                                                    </div>
 			                                                    <div className="col-md-4 col-sm-4">
 			                                                        <div className="form-group">
 			                                                            <input type="text" className="form-control" name="satClose" 
-			                                                            value={this.state.satClose} onChange={this.handleOpenHours.bind(this)}/>
+			                                                            onChange={this.handleOpenHours.bind(this)}/>
 			                                                        </div>
 			                                                    </div>
 			                                                </div>
@@ -607,13 +551,13 @@ export class EditListingContent extends React.Component {
 			                                                    <div className="col-md-4 col-sm-4">
 			                                                        <div className="form-group">
 			                                                            <input type="text" className="form-control" name="sunOpen" 
-			                                                            value={this.state.sunOpen} onChange={this.handleOpenHours.bind(this)}/>
+			                                                            onChange={this.handleOpenHours.bind(this)}/>
 			                                                        </div>
 			                                                    </div>
 			                                                    <div className="col-md-4 col-sm-4">
 			                                                        <div className="form-group">
 			                                                            <input type="text" className="form-control" name="sunClose" 
-			                                                            value={this.state.sunClose} onChange={this.handleOpenHours.bind(this)}/>
+			                                                           onChange={this.handleOpenHours.bind(this)}/>
 			                                                        </div>
 			                                                    </div>
 			                                                </div>
@@ -623,193 +567,17 @@ export class EditListingContent extends React.Component {
 			                                </div>
 			                            </section>
 			                            <section>
-			                                <h3>Restaurant Menu<span className="note">(optional)</span></h3>
-			                                <div className="panel-group" id="accordion-2" role="tablist" aria-multiselectable="true">
-			                                    <div className="panel panel-default">
-			                                        <div className="panel-heading" role="tab" id="accordion-heading-2">
-			                                            <h4 className="panel-title">
-			                                                <a role="button" data-toggle="collapse" href="#accordion-collapse-2" data-parent="#accordion-2" aria-expanded="false" aria-controls="accordion-collapse-2">
-			                                                    <i className="fa fa-cutlery"></i>Add restaurant menu
-			                                                </a>
-			                                            </h4>
-			                                        </div>
-			                                        <div id="accordion-collapse-2" className="panel-collapse collapse" role="tabpanel" aria-labelledby="accordion-heading-2">
-			                                            <div className="panel-body">
-			                                                <div className="wrapper">
-			                                                    <div className="row">
-			                                                        <div className="col-md-3 col-sm-3"><strong>Title </strong><span className="note">(Optional)</span></div>
-			                                                        <div className="col-md-6 col-sm-6"><strong>Description</strong></div>
-			                                                        <div className="col-md-3 col-sm-3"><strong>Meal Type</strong></div>
-			                                                    </div>
-			                                                    <div className="row">
-			                                                        <div className="col-md-3 col-sm-3">
-			                                                            <div className="form-group">
-			                                                                <input type="text" className="form-control" name="menu_title[]" placeholder="Title" 
-			                                                                value={this.state.menuTitle} onChange={this.handleChangeMenuTilte.bind(this)}/>
-			                                                            </div>
-			                                                        </div>
-			                                                        <div className="col-md-6 col-sm-6">
-			                                                            <div className="form-group">
-			                                                                <input type="text" className="form-control" name="menu_description[]" placeholder="Description"
-			                                                                value={this.state.menuDesc} onChange={this.handleChangeMenuDesc.bind(this)}/>
-			                                                            </div>
-			                                                        </div>
-			                                                        <div className="col-md-3 col-sm-3">
-			                                                            <div className="form-group">
-			                                                                <select className="form-control selectpicker" name="menu_type[]"
-			                                                                value={this.state.menuType} onChange={this.handleChangeMenuType.bind(this)}>
-			                                                                    <option value="">Select meal type</option>
-			                                                                    <option value="starter">Starter</option>
-			                                                                    <option value="soup">Soup</option>
-			                                                                    <option value="main-course">Main Course</option>
-			                                                                    <option value="desert">Desert</option>
-			                                                                </select>
-			                                                            </div>
-			                                                        </div>
-			                                                        <div className="col-md-12 col-sm-12">
-				                                                    	<div className="form-group">
-										                                    <label htmlFor="video">Menu Video URL</label>
-										                                    <input type="text" className="form-control" name="video" id="video" placeholder="http://"
-										                                     value={this.state.menuVideo} onChange={this.handleMenuVideo.bind(this)}/>
-									                                	</div>
-									                                </div>
-			                                                    </div>
-			                                                </div>
-			                                                <div className="center"><button onSubmit={this.handleMenuSubmit.bind(this)}className="btn btn-rounded btn-primary btn-framed btn-light-frame btn-xs icon duplicate"><i className="fa fa-plus"></i>Add another meal</button></div>
-			                                            </div>
-			                                        </div>
-			                                    </div>
-			                                </div>
-			                            </section>
-			                            <section>
-			                                <h3>Schedule<span className="note">(optional)</span></h3>
-			                                <div className="panel-group" id="accordion-3" role="tablist" aria-multiselectable="true">
-			                                    <div className="panel panel-default">
-			                                        <div className="panel-heading" role="tab" id="accordion-heading-3">
-			                                            <h4 className="panel-title">
-			                                                <a role="button" data-toggle="collapse" data-parent="#accordion-3" href="#accordion-collapse-3" aria-expanded="false" aria-controls="accordion-collapse-3">
-			                                                    <i className="fa fa-calendar"></i>Add schedule plan
-			                                                </a>
-			                                            </h4>
-			                                        </div>
-			                                        <div id="accordion-collapse-3" className="panel-collapse collapse" role="tabpanel" aria-labelledby="accordion-heading-3">
-			                                            <div className="panel-body">
-			                                                <div className="wrapper">
-			                                                    <div className="row">
-			                                                        <div className="col-md-2 col-sm-3">
-			                                                            <strong>Date</strong>
-			                                                        </div>
-			                                                        <div className="col-md-2 col-sm-3">
-			                                                            <strong>Time</strong>
-			                                                        </div>
-			                                                        <div className="col-md-4 col-sm-3">
-			                                                            <strong>Place</strong>
-			                                                        </div>
-			                                                        <div className="col-md-4 col-sm-3">
-			                                                            <strong>Address</strong>
-			                                                        </div>
-			                                                    </div>
-			                                                    <div className="row" id="duplicate-schedule">
-			                                                        <div className="col-md-2 col-sm-3">
-			                                                            <div className="form-group">
-			                                                                <input type="text" className="form-control" name="schedule_date[]" placeholder="Date"
-			                                                                value={this.state.scheduleDate} onChange={this.handleChangeScheduleDate.bind(this)}/>
-			                                                            </div>
-			                                                        </div>
-			                                                        <div className="col-md-2 col-sm-3">
-			                                                            <div className="form-group">
-			                                                                <input type="text" className="form-control" name="schedule_time[]" placeholder="Time"
-			                                                                value={this.state.time} onChange={this.handleChangeTime.bind(this)}/>
-			                                                            </div>
-			                                                        </div>
-			                                                        <div className="col-md-4 col-sm-3">
-			                                                            <div className="form-group">
-			                                                                <input type="text" className="form-control" name="schedule_place[]" placeholder="Place"
-			                                                                value={this.state.place} onChange={this.handleChangePlace.bind(this)}/>
-			                                                            </div>
-			                                                        </div>
-			                                                        <div className="col-md-4 col-sm-3">
-			                                                            <div className="form-group">
-			                                                                <input type="text" className="form-control" name="schedule_address[]" placeholder="Address"
-			                                                                value={this.state.scheduleAddress} onChange={this.handleChangeScheduleAddress.bind(this)}/>
-			                                                            </div>
-			                                                        </div>
-			                                                    </div>
-			                                                </div>
-			                                                <div className="center"><a href="#duplicate-schedule" className="btn btn-rounded btn-primary btn-framed btn-light-frame btn-xs icon duplicate"><i className="fa fa-plus"></i>Add another schedule item</a></div>
-			                                            </div>
-			                                        </div>
-			                                    </div>
-			                                </div>
-			                            </section>
-			                            <section>
-			                                <h3>Ceremony Package<span className="note">(optional)</span></h3>
-			                                <div className="panel-group" id="accordion-4" role="tablist" aria-multiselectable="true">
-			                                    <div className="panel panel-default">
-			                                        <div className="panel-heading" role="tab" id="accordion-heading-4">
-			                                            <h4 className="panel-title">
-			                                                <a role="button" data-toggle="collapse" href="#accordion-collapse-4" data-parent="#accordion-4" aria-expanded="false" aria-controls="accordion-collapse-4">
-			                                                    <i className="fa fa-cutlery"></i>Add ceremony package
-			                                                </a>
-			                                            </h4>
-			                                        </div>
-			                                        <div id="accordion-collapse-4" className="panel-collapse collapse" role="tabpanel" aria-labelledby="accordion-heading-4">
-			                                            <div className="panel-body">
-			                                                <div className="wrapper">
-			                                                    <div className="row">
-			                                                        <div className="col-md-12 col-sm-6">
-			                                                            <div className="form-group">
-			                                                            	<label htmlFor="video">Title</label>
-			                                                                <input type="text" className="form-control" name="menu_title[]" placeholder="Title" 
-			                                                                value={this.state.ceremonyTitle} onChange={this.handleChangeCeremonyTilte.bind(this)}/>
-			                                                            </div>
-			                                                        </div>
-			                                                        <div className="col-md-12 col-sm-6">
-			                                                            <div className="form-group">
-			                                                           		<label htmlFor="video">Description</label>
-			                                                                <div>
-											                                    <Editor
-																			       	editorCeremonyState={this.state.editorCeremonyState}
-																			       	onEditorCeremonyStateChange={this.onEditorCeremonyStateChange.bind(this)}
-																					wrapperClassName="wrapper-class"
-																					editorClassName="editor-class"
-																					toolbarClassName="toolbar-class"	
-																				/>
-																			</div>
-			                                                            </div>
-			                                                        </div>
-			                                                        <div className="col-md-12 col-sm-12">
-				                                                    	<div className="form-group">
-										                                    <label htmlFor="video">Ceremony Video URL</label>
-										                                    <input type="text" className="form-control" name="video" id="video" placeholder="http://"
-										                                     value={this.state.ceremonyVideo} onChange={this.handleCeremonyVideo.bind(this)}/>
-									                                	</div>
-									                                </div>
-									                                <div className="col-md-12 col-sm-12">
-										                                <div className="file-uploaded-images">
-																	        <div className="image">
-																	            <figure><i className="fa fa-close"></i></figure>
-																	            <img src="assets/img/items/1.jpg" alt="" />
-																	        </div>
-																	        <div className="image">
-																	            <figure><i className="fa fa-close"></i></figure>
-																	            <img src="assets/img/items/2.jpg" alt="" />
-																	        </div>
-																	    </div>
-																	    <div className="file-upload-previews"></div>
-																	    <div className="file-upload">
-																	        <input type="file" name="files[]" className="file-upload-input with-preview"/>
-																	        <span>Click or drag images here</span>
-																	    </div>
-																	</div>
-			                                                    </div>
-			                                                </div>
-			                                                <div className="center"><button onSubmit={this.handleMenuSubmit.bind(this)}className="btn btn-rounded btn-primary btn-framed btn-light-frame btn-xs icon duplicate"><i className="fa fa-plus"></i>Add another meal</button></div>
-			                                            </div>
-			                                        </div>
-			                                    </div>
-			                                </div>
-			                            </section>
+											{menus}	
+											<div className="center"><button onClick={this.handleMenuSubmit.bind(this)} className="btn btn-rounded btn-primary btn-framed btn-light-frame btn-xs icon duplicate"><i className="fa fa-plus"></i>Add another Restaurant menu</button></div>
+										</section>
+			                       		<section>
+											{schedules}	
+											<div className="center"><button onClick={this.handleScheduleSubmit.bind(this)} className="btn btn-rounded btn-primary btn-framed btn-light-frame btn-xs icon duplicate"><i className="fa fa-plus"></i>Add another schedule</button></div>
+										</section>
+			                       		<section>
+											{ceremonies}	
+											<div className="center"><button onClick={this.handleCeremonySubmit.bind(this)} className="btn btn-rounded btn-primary btn-framed btn-light-frame btn-xs icon duplicate"><i className="fa fa-plus"></i>Add another Ceremony</button></div>
+										</section>
 			                            <hr/>
 			                            <section className="center">
 			                                <div className="form-group">

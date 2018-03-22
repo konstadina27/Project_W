@@ -23,13 +23,14 @@ export class ServicesPackage extends React.Component {
 	}
     handleServiceSubmit(event) {
 		let service = this.state.service
+		
 		service.push({
 			id: (service.length + 1) - 1,
 			servicesTitle: this.state.servicesTitle,
 			servicesVideo: this.state.servicesVideo,
 			servicesPrice: this.state.servicesPrice,
 			serviceFiles:this.state.serviceFiles,
-			editorState:JSON.stringify(convertToRaw(this.state.editorState.getCurrentContent()))
+			
 		})
 		this.setState({
 			service: service

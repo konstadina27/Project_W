@@ -4,8 +4,9 @@ export class FormContent extends React.Component {
     constructor(props){
         super(props);
         this.state={
-            first_name:"",
-            last_name:"",
+            userImage:"",
+            firstName:"",
+            lastName:"",
             email:"",
             phone:"",
             about:"",      
@@ -15,65 +16,14 @@ export class FormContent extends React.Component {
             youtube:"",
         }
     }
-    handleChangeFirstName(event) {
+    handleValueChange(event){
         this.setState({
-            first_name: event.target.value
+            [event.target.name]: event.target.value
         })
     }
-    handleChangeLastName(event) {
-        this.setState({
-            last_name: event.target.value
-        })
-    }
-    handleChangeEmail(event) {
-        this.setState({
-            email: event.target.value
-        })
-    }
-    handleChangePhone(event) {
-        this.setState({
-            phone: event.target.value
-        })
-    }
-    handleChangeAbout(event) {
-        this.setState({
-            about: event.target.value
-        })
-    }
-        handleChangeFacebook(event) {
-        this.setState({
-            facebook: event.target.value
-        })
-    }
-    handleChangeTwitter(event) {
-        this.setState({
-            twitter: event.target.value
-        })
-    }
-    handleChangePinterest(event) {
-        this.setState({
-            pinterest: event.target.value
-        })
-    }
-    handleChangeYoutube(event) {
-        this.setState({
-            youtube: event.target.value
-        })
-    }
-        handleSubmit(event) {
+    handleSubmit(event) {
         console.log(this.state);
         event.preventDefault();
-        this.setState({
-            first_name:"",
-            last_name:"",
-            email:"",
-            phone:"",
-            about:"",      
-            facebook:"",
-            twitter:"",
-            pinterest:"",
-            youtube:"",            
-        })
       } 
 	render(){
 		return(
@@ -84,7 +34,7 @@ export class FormContent extends React.Component {
                             <div className="image">
                                 <div className="bg-transfer"><img src="assets/img/person-01.jpg" alt="" /></div>
                                 <div className="single-file-input">
-                                    <input type="file" id="user_image" name="user_image" />
+                                    <input type="file" id="user_image" name="userImage" onChange={this.handleValueChange.bind(this)}/>
                                     <div>Upload a picture<i className="fa fa-upload"></i></div>
                                 </div>
                             </div>
@@ -107,36 +57,36 @@ export class FormContent extends React.Component {
                         <div className="col-md-6 col-sm-6">
                             <div className="form-group">
                                 <label htmlFor="first_name">First Name</label>
-                                <input type="text" className="form-control" name="first_name" id="first_name" placeholder="Jane" 
-                                value={this.state.first_name} onChange={this.handleChangeFirstName.bind(this)}/>
+                                <input type="text" className="form-control" name="firstName" id="firstName" placeholder="Jane" 
+                                 onChange={this.handleValueChange.bind(this)}/>
                             </div>
                         </div>
                         <div className="col-md-6 col-sm-6">
                             <div className="form-group">
                                 <label htmlFor="last_name">Last Name</label>
-                                <input type="text" className="form-control" name="last_name" id="last_name" placeholder="Green" 
-                                value={this.state.last_name} onChange={this.handleChangeLastName.bind(this)}/>
+                                <input type="text" className="form-control" name="lastName" id="lastName" placeholder="Green" 
+                                 onChange={this.handleValueChange.bind(this)}/>
                        		</div>
                         </div>
                         <div className="col-md-6 col-sm-6">
                             <div className="form-group">
                                 <label htmlFor="email">Email</label>
                                 <input type="email" className="form-control" name="email" id="email" placeholder="jane@example.com" 
-                                value={this.state.email} onChange={this.handleChangeEmail.bind(this)}/>
+                                 onChange={this.handleValueChange.bind(this)}/>
                         	</div>
                         </div>
                         <div className="col-md-6 col-sm-6">
                             <div className="form-group">
                                 <label htmlFor="phone">Phone</label>
                                 <input type="text" className="form-control" name="phone" id="phone" placeholder="+1 260-478-7987"
-                                 value={this.state.phone} onChange={this.handleChangePhone.bind(this)}/>
+                                  onChange={this.handleValueChange.bind(this)}/>
                             </div>
                         </div>
                     </div>
                     <div className="form-group">
                         <label htmlFor="message">About You</label>
-                        <textarea className="form-control" id="message" rows="2" name="message" placeholder="Something about me" 
-                        value={this.state.about}onChange={this.handleChangeAbout.bind(this)}> 
+                        <textarea className="form-control" id="message" rows="2" name="about" placeholder="Something about me" 
+                        onChange={this.handleValueChange.bind(this)}> 
                         </textarea>
                     </div>
                 </section>
@@ -147,28 +97,28 @@ export class FormContent extends React.Component {
                             <div className="form-group">
                                 <label htmlFor="facebook">Facebook</label>
                                 <input type="text" className="form-control" name="facebook" id="facebook" placeholder="Facebook" 
-                                value={this.state.facebook} onChange={this.handleChangeFacebook.bind(this)}/>
+                                onChange={this.handleValueChange.bind(this)}/>
                              </div>
                         </div>
                         <div className="col-md-6 col-sm-6">
                             <div className="form-group">
                                 <label htmlFor="twitter">Twitter</label>
                                 <input type="text" className="form-control" name="twitter" id="twitter" placeholder="Twitter"
-                                value={this.state.twitter} onChange={this.handleChangeTwitter.bind(this)} />
+                                onChange={this.handleValueChange.bind(this)} />
                             </div>
                         </div>
                         <div className="col-md-6 col-sm-6">
                             <div className="form-group">
                                 <label htmlFor="pinterest">Pinterest</label>
                                 <input type="text" className="form-control" name="pinterest" id="pinterest" placeholder="Pinterest"
-                                value={this.state.pinterest} onChange={this.handleChangePinterest.bind(this)} />
+                                onChange={this.handleValueChange.bind(this)} />
                             </div>
                         </div>
                         <div className="col-md-6 col-sm-6">
                             <div className="form-group">
                                 <label htmlFor="youtube">Youtube</label>
                                 <input type="text" className="form-control" name="youtube" id="youtube" placeholder="Youtube" 
-                                value={this.state.youtube} onChange={this.handleChangeYoutube.bind(this)}/>
+                                onChange={this.handleValueChange.bind(this)}/>
                             </div>
                         </div>
                     </div>

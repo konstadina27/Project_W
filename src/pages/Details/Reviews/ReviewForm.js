@@ -1,12 +1,33 @@
 import React from 'react';
 
 export class ReviewsForm extends React.Component {
+	constructor(props){
+		super(props);
+		this.state={
+			title:"",
+			message:"",
+		}
+	}
+	handleTitle(event){
+		this.setState({
+			[event.target.name]: event.target.value 
+		})
+	}
+	handleMessage(event){
+		this.setState({
+			[event.target.name]: event.target.value 
+		})
+	}
+    handleSubmit(event) {
+        console.log(this.state);
+        event.preventDefault();
+      }
 	render(){
 		return(
 		<div>
 			<section id="write-a-review">
 			    <h2>Write a Review</h2>
-			    <form className="clearfix form inputs-underline">
+			    <form className="clearfix form inputs-underline" onSubmit={this.handleSubmit.bind(this)}>
 			        <div className="box">
 			            <div className="comment">
 			                <div className="row">
@@ -16,11 +37,13 @@ export class ReviewsForm extends React.Component {
 			                        </div>
 			                        <div className="form-group">
 			                            <label htmlFor="name">Title of your review<em>*</em></label>
-			                                <input type="text" className="form-control" id="name" name="name" placeholder="Beautiful place!" required="" />
+			                                <input type="text" className="form-control" id="name" name="title" placeholder="Beautiful place!" required="" 
+			                                onChange={this.handleTitle.bind(this)} />
 			                        </div>
 			                        <div className="form-group">
 			                            <label htmlFor="message">Your Message<em>*</em></label>
-			                            <textarea className="form-control" id="message" rows="8" name="message" required="" placeholder="Describe your experience"></textarea>
+			                            <textarea className="form-control" id="message" rows="8" name="message" required="" placeholder="Describe your experience"
+			                            onChange={this.handleMessage.bind(this)}></textarea>
 			                        </div>
 			                    </div>
 			                    <div className="col-md-4">

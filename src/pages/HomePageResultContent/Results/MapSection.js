@@ -1,7 +1,7 @@
 import React from 'react';
 import {SearchContainer} from './SearchContainer';
 
-export class Slider extends React.Component {
+export class MapSection extends React.Component {
 	render(){
 		return(
 		    <div className="hero-section full-screen has-map has-sidebar sidebar-grid">

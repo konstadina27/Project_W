@@ -12,14 +12,9 @@ export class SignInContent extends React.Component {
 			password:"",
 		}	
 	}
-	handleChangeEmail(event) {
+	handleValueChange(event){
 		this.setState({
-			email: event.target.value
-		})
-	}
-	handleChangePassword(event) {
-		this.setState({
-			password: event.target.value
+			[event.target.name]: event.target.value
 		})
 	}
 	handleSubmit(event) {
@@ -45,14 +40,13 @@ export class SignInContent extends React.Component {
 					                <form className="form inputs-underline" onSubmit={this.handleSubmit.bind(this)}>
 					                    <div className="form-group">
 					                        <label htmlFor="email">Email</label>
-					                        <input type="email" className="form-control" name="email" id="email" placeholder="Your email"  value={this.state.email} 
-				                        onChange={this.handleChangeEmail.bind(this)}/>
+					                        <input type="email" className="form-control" name="email" id="email" placeholder="Your email"  
+				                        onChange={this.handleValueChange.bind(this)}/>
 					                    </div>
 					                    <div className="form-group">
 					                        <label htmlFor="password">Password</label>
 					                        <input type="password" className="form-control" name="password" id="password" placeholder="Your password" 				                        
-					                        value={this.state.password} 
-				                        	onChange={this.handleChangePassword.bind(this)}/>
+				                        	onChange={this.handleValueChange.bind(this)}/>
 					                    </div>
 					                    <div className="form-group center">
 					                        <button type="submit" className="btn btn-primary width-100">Sign In</button>

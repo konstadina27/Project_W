@@ -7,7 +7,6 @@ export class AgentInfo extends React.Component {
 		    <div className="subject-detail">
 		        <div className="description">
 		            <section className="name">
-		               
 		                <p>{this.props.desc}</p>
 		            </section>
 		            <section className="contacts">
